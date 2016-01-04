@@ -1,0 +1,57 @@
+alias ll='ls -laF'
+
+complete -cf sudo
+complete -cf man
+
+stty -ixon
+
+source /usr/bin/virtualenvwrapper.sh
+export WORKON_HOME=~/.venvs
+mkdir -p $WORKON_HOME
+
+export PYTHONDONTWRITEBYTECODE=1
+
+# git
+source /usr/share/git/completion/git-completion.bash
+
+alias gp='git push'
+__git_complete gp _git_push
+
+alias gpu='git pull --rebase'
+__git_complete gpu _git_pull
+
+alias gb='git branch'
+__git_complete gb _git_branch
+
+alias gc='git checkout'
+__git_complete gc _git_checkout
+
+alias diff='colordiff'
+
+alias gd='git diff --color'
+__git_complete gd _git_diff
+
+alias gdi='git diff --color --word-diff'
+__git_complete gdi _git_diff
+
+alias gdc='git diff --cached'
+__git_complete gdc _git_diff
+
+alias gm='git commit -m'
+__git_complete gm _git_commit
+
+alias gma='git commit -am'
+__git_complete gma _git_commit
+
+alias gr='git reset'
+__git_complete gr _git_reset
+
+alias gs='git status'
+alias gss='git status -s'
+alias gsi='git status --ignored'
+alias gsii='git ls-files --others'
+alias gl="git log -n 10 --pretty=format:\"%Cgreen%h %Creset%s %C(blue)by %an (%ar) %Cred %d\" --graph"
+alias gll="git log --stat --max-count=3"
+
+PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+export LANG=en_US.UTF-8
