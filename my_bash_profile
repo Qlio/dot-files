@@ -54,4 +54,13 @@ alias gl="git log -n 10 --pretty=format:\"%Cgreen%h %Creset%s %C(blue)by %an (%a
 alias gll="git log --stat --max-count=3"
 
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+
+# SoundCloud App
+PATH=$PATH:/opt/soundcloud
+PATH=/opt/soundcloud:$PATH
+PATH=/home/qlio/.composer/vendor/bin:$PATH
+
 export LANG=en_US.UTF-8
+
+# save history of all terminal
+export PROMPT_COMMAND='history -a'
