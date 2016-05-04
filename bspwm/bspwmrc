@@ -1,0 +1,25 @@
+#!/bin/sh
+
+bspc config border_width 2
+bspc config window_gap 4
+bspc config focus_follows_pointer true
+
+bspc config remove_disabled_monitors true
+
+bspc config split_ratio 0.50
+
+bspc monitor LVDS1 -d I II III IV
+bspc monitor VGA1 -d V VI VII VIII IX X
+# bspc monitor -a INVISemail INVISkeepassx INVISzeal
+
+# Startup Shits
+~/.config/bspwm/panel/panel &
+~/.config/bspwm/startup &
+sxhkd &
+
+# Rules
+# bspc rule -a Thunderbird desktop=INVISemail
+# bspc rule -a zeal desktop=INVISzeal
+# bspc rule -a keepassx desktop=INVISkeepassx
+# bspc rule -a Skype desktop=^2
+# bspc rule -a VirtualBox floating=on
