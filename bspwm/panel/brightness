@@ -1,4 +1,8 @@
 #!/bin/bash
 
-lvl=$(printf "%.0f" $(xbacklight))
-echo -ne "\uf0eb $lvl%"
+maxBrightness=$(< /sys/class/backlight/intel_backlight/max_brightness)
+brightness=$(< /sys/class/backlight/intel_backlight/brightness)
+
+percent=$(awk "BEGIN { pc=100*${brightness}/${maxBrightness}; i=int(pc); print (pc-i<0.5)?i:i+1 }")
+
+echo -ne "\uf0eb $percent%"

@@ -31,7 +31,7 @@ while true; do
         "$(./battery)" \
         "" > "$PANEL_FIFO"
 
-	sleep 0.1s
+	sleep 0.5s
 done &
 
 ./panel_bar < "$PANEL_FIFO" | lemonbar \
