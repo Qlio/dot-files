@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo -e "\uf02a $(free | awk '/Mem/ {printf("%d", $3/$2 * 100)}')%"
