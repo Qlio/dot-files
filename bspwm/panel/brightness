@@ -1,0 +1,4 @@
+#!/bin/bash
+
+lvl=$(printf "%.0f" $(xbacklight))
+echo -ne "\uf0eb $lvl%"

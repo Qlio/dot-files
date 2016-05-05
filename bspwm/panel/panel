@@ -24,7 +24,10 @@ bspc subscribe report > "$PANEL_FIFO" &
 
 while true; do
     echo "S" \
+        "%{r}" \
         "${YELLOW} $(./clock) |" \
+        "$(./brightness) |" \
+        "$(./volume) |" \
         "$(./battery)" \
         "" > "$PANEL_FIFO"
 

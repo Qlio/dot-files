@@ -1,0 +1,13 @@
+#! /bin/bash
+
+lvl=$(amixer get Master | awk 'END { gsub(/[%\[\]]/, ""); print $5 }')
+
+if [[ $lvl -gt 50 ]]; then
+    icon="\uf028"
+elif [[ $lvl -gt 0 ]]; then
+    icon="\uf027"
+else
+    icon="\uf026"
+fi
+
+echo -ne "$icon $lvl%"
