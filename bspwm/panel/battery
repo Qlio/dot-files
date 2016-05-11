@@ -10,7 +10,7 @@ output=""
 if [[ -z $batStatus ]]; then
     echo -e "${GRAY} \uf1e6"
 
-elif [[ $batStatus == Unknown ]]; then
+elif [[ $batStatus == Charging ]]; then
     if [[ $batLevel -gt 80 ]]; then
         output="${GREEN} \uf240"
     elif [[ $batLevel -gt 60 ]]; then
