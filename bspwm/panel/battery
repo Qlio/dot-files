@@ -25,15 +25,15 @@ elif [[ $batStatus == Unknown ]]; then
     echo -e "$output $batLevel%"
 elif [[ $batStatus == Discharging ]]; then
     if [[ $batLevel -gt 80 ]]; then
-        output="${RED4} \uf240"
+        output="${RED} \uf240"
     elif [[ $batLevel -gt 60 ]]; then
-        output="${RED3} \uf241"
+        output="${RED1} \uf241"
     elif [[ $batLevel -gt 40 ]]; then
         output="${RED2} \uf242"
     elif [[ $batLevel -gt 20 ]]; then
-        output="${RED1} \uf243"
+        output="${RED3} \uf243"
     else
-        output="${RED} \uf244"
+        output="${RED4} \uf244"
     fi
     echo -e "$output $batLevel%"
 elif [[ $batStatus == Full ]]; then
