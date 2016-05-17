@@ -1,0 +1,105 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+alt + Return
+  urxvt
+
+# program launcher
+alt + space
+  dmenu_run
+
+# make sxhkd reload its configuration files:
+super + Escape
+  pkill -USR1 -x sxhkd
+
+# Close window
+ctrl + {_,shift +} w
+	bspc node {-c,-k}
+
+# Backlight
+XF86MonBrightness{Up,Down}
+  xbacklight -{inc,dec} 10
+
+# Audio
+XF86AudioMute
+ amixer set Master toggle
+
+XF86Audio{Raise,Lower}Volume
+ amixer set Master 5%{+,-}
+
+#
+# bspwm hotkeys
+#
+
+# alternate between the tiled and monocle layout
+super + m
+  bspc desktop -l next
+
+# set node to floating
+super + i
+  bspc node -t floating
+
+# set node to tiled
+super + o
+  bspc node -t tiled
+
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+alt + {h,j,k,l}
+  bspc node -f {west,south,north,east}
+
+super + shift + {h,j,k,l}
+  bspc node -s {west,south,north,east}
+
+# focus the next/previous desktop
+ctrl + {alt,super} + {h,l}
+  bspc {desktop -f,node -d} {prev,next}
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+  bspc {desktop -f,node -d} '^{1-9,10}'
+
+#
+# preselect
+#
+
+# preselect the direction
+super + {h,j,k,l}
+  bspc node -p {west,south,north,east}
+
+# cancel the preselection for the focused desktop
+ctrl + space
+  bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# resize tiled/floating
+#
+
+# expand the tiled space in the given direction
+super + alt + {h,j,k,l}
+  bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
+
+# contract the tiled space in the given direction
+super + alt + shift + {h,j,k,l}
+  bspc node {@east -r -10,@north -r +10,@south -r -10,@west -r +10}
+
+#
+# pointer focus/move/resize
+#
+
+# focus
+~button1
+  bspc pointer -g focus
+
+# start move/resize
+super + button{1,2}
+  ; bspc pointer -g {move,resize_side}
+
+# end move/resize
+super + @button{1-3}
+  bspc pointer -u
