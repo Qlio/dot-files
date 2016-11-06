@@ -23,3 +23,7 @@ sxhkd &
 # bspc rule -a keepassx desktop=INVISkeepassx
 # bspc rule -a Skype desktop=^2
 # bspc rule -a VirtualBox floating=on
+
+# Java things
+bspc config focus_follows_pointer false
+wmname LG3D
