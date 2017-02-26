@@ -1,7 +1,7 @@
 #!/bin/sh
 
 bspc config border_width 2
-bspc config window_gap 4
+bspc config window_gap 2
 bspc config focus_follows_pointer true
 
 bspc config remove_disabled_monitors true
@@ -25,5 +25,5 @@ sxhkd &
 # bspc rule -a VirtualBox floating=on
 
 # Java things
-bspc config focus_follows_pointer false
+bspc config focus_follows_pointer true  # Fuck java
 wmname LG3D

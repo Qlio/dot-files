@@ -14,6 +14,10 @@ alt + space
 super + Escape
   pkill -USR1 -x sxhkd
 
+# make sxhkd reload its configuration files:
+super + space
+  ~/.config/unsplash_wallpaper.sh
+
 # Close window
 ctrl + {_,shift +} w
 	bspc node {-c,-k}
@@ -28,6 +32,9 @@ XF86AudioMute
 
 XF86Audio{Raise,Lower}Volume
  amixer set Master 5%{+,-}
+
+XF86Audio{Next,Previous,Play}
+  dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.{Next,Previous,PlayPause}
 
 #
 # bspwm hotkeys
