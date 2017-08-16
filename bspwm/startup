@@ -1,11 +1,5 @@
 #! /bin/sh
 
-sleep 1
-# xcape -t 300 &
-stalonetray &
-# insync start &
+# Launch systray
+pgrep -u "$USER" stalonetray >/dev/null || stalonetray &
 nm-applet &
-# redshift-gtk &
-# zeal &
-# wmname LG3D &  # Fix java graphics bug
-# keepassx ~/drive/.p/main.kdb &
