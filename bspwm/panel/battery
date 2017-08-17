@@ -23,21 +23,21 @@ elif [[ $batStatus == Charging ]]; then
         output="${GREEN4} \uf244"
     fi
     echo -e "$output $batLevel%"
+
 elif [[ $batStatus == Discharging ]]; then
     if [[ $batLevel -gt 80 ]]; then
-        output="${RED4} \uf240"
+        output="${GREEN1} \uf240"
     elif [[ $batLevel -gt 60 ]]; then
-        output="${RED4} \uf241"
+        output="${GREEN2} \uf241"
     elif [[ $batLevel -gt 40 ]]; then
-        output="${RED4} \uf242"
+        output="${GREEN3} \uf242"
     elif [[ $batLevel -gt 20 ]]; then
-        output="${RED4} \uf243"
+        output="${GREEN4} \uf243"
     else
-        output="${RED4} \uf244"
+        output="${RED} \uf244"
     fi
     echo -e "$output $batLevel%"
+
 elif [[ $batStatus == Full ]]; then
-    echo -e "${GREEN} \uf240 $batLevel%"
-else
     echo -e "${GREEN} \uf240 $batLevel%"
 fi
