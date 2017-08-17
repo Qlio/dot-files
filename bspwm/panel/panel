@@ -36,8 +36,7 @@ while true; do
 done &
 
 ./panel_bar < "$PANEL_FIFO" | lemonbar \
-    -f "FontAwesome:size=10" \
-    -f "Droid Sans:size=10" \
+    -f "xft:FontAwesome:size=10" \
      x"$PANEL_HEIGHT" \
     -F "$COLOUR_FOREGROUND" \
     -B "$COLOUR_BACKGROUND" \

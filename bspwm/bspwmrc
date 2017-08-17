@@ -9,14 +9,11 @@ bspc config remove_disabled_monitors true
 
 bspc config split_ratio 0.50
 
-bspc monitor LVDS1 -d I II III IV V
+bspc monitor eDP1 -d I II III IV V
 bspc monitor HDMI1 -d VI VII VIII IX X
 
-# Startup Shits
+# Startup
 ~/.config/bspwm/panel/panel &
-sxhkd &
-
-~/.config/bspwm/startup &
 
 # Java things
 wmname LG3D

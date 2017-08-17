@@ -1,5 +1,0 @@
-#! /bin/sh
-
-# Launch systray
-pgrep -u "$USER" stalonetray >/dev/null || stalonetray &
-nm-applet &
