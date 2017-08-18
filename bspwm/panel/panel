@@ -35,13 +35,13 @@ while true; do
 	sleep 0.5s
 done &
 
-./panel_bar < "$PANEL_FIFO" | lemonbar \
+./panel_bar < "$PANEL_FIFO" | lemonbar -a 12 \
     -f "FontAwesome:size=10" \
     -f "Monaco:size=9" \
      x"$PANEL_HEIGHT" \
     -F "$COLOUR_FOREGROUND" \
     -B "$COLOUR_BACKGROUND" \
-    -g "$PANEL_GEOMETRY" &
+    -g "$PANEL_GEOMETRY" | sh &
 
 wait
 # vim: set ft=sh:
