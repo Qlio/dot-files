@@ -1,39 +1,7 @@
-!xterm*faceName: Monaco:size=10
-!xterm*letterSpace: 10
-!xterm*background: #3f3f3f
-!xterm*foreground: #dcdccc
-!
-!xterm*color0: #3f3f3f
-!xterm*color1: #fa8072
-!xterm*color2: #98fb98
-!xterm*color3: #dfaf8f
-!xterm*color4: #506070
-!xterm*color5: #dc8cc3
-!xterm*color6: #8cd0d3
-!xterm*color7: #dcdccc
-!xterm*color8: #709080
-!xterm*color9: #dca3a3
-!xterm*color10: #c3bf9f
-!xterm*color11: #f0dfaf
-!xterm*color12: #94bff3
-!xterm*color13: #ec93d3
-!xterm*color14: #93e0e3
-!xterm*color15: #ffffff
-!
-!xterm*scrollBar: false
-!xterm*iso14755: false
-!xterm*iso14755_52: false
-!xterm*VT100.Translations: #override \
-!                 Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
-!                 Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
-!
-!xterm*charClass: 33:48,36-38:48,43-47:48,58:48,61:48,63-64:48,126:48
-!xterm*metaSendsEscape: true
-
-Xft*dpi: 96
 Xft*antialias: true
 
-URxvt*font: xft:monospace:size=9
+URxvt*font: xft:Monaco:medium:size=9
+URxvt*letterSpace: 1
 URxvt.background: #3f3f3f
 URxvt.foreground: #dcdccc
 
