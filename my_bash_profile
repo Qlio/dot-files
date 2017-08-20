@@ -1,3 +1,6 @@
+export XDG_CONFIG_HOME="$HOME/.config"
+export WALLPAPRES_DIR="$HOME/.wallpapers"
+
 alias ll='ls -laF'
 
 complete -cf sudo
@@ -53,7 +56,7 @@ alias gsii='git ls-files --others'
 alias gl="git log -n 10 --pretty=format:\"%Cgreen%h %Creset%s %C(blue)by %an (%ar) %Cred %d\" --graph"
 alias gll="git log --stat --max-count=3"
 
-PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+# PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 # SoundCloud App
 PATH=$PATH:/opt/soundcloud
@@ -66,3 +69,12 @@ export LANG=en_US.UTF-8
 export PROMPT_COMMAND='history -a'
 
 export PANEL_FIFO='/tmp/panel-fifo'
+export VISUAL='vim'
+
+if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
+  exec startx
+fi
+
+# keyboard rate
+xset r rate 200 30
+
