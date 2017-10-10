@@ -8,21 +8,10 @@ batLevel=$(acpi --battery | awk '{gsub(/[,%]/, ""); print $4}')
 output=""
 
 if [[ -z $batStatus ]]; then
-    echo -e "${GRAY} \uf1e6"
+    output="${GRAY} \uf1e6"
 
 elif [[ $batStatus == Charging ]]; then
-    if [[ $batLevel -gt 80 ]]; then
-        output="${GREEN} \uf240"
-    elif [[ $batLevel -gt 60 ]]; then
-        output="${GREEN} \uf241"
-    elif [[ $batLevel -gt 40 ]]; then
-        output="${GREEN} \uf242"
-    elif [[ $batLevel -gt 20 ]]; then
-        output="${GREEN} \uf243"
-    else
-        output="${GREEN} \uf244"
-    fi
-    echo -e "$output $batLevel%"
+    output="${GREEN} \uf0e7 $batLevel% "
 
 elif [[ $batStatus == Discharging ]]; then
     if [[ $batLevel -gt 80 ]]; then
@@ -36,8 +25,10 @@ elif [[ $batStatus == Discharging ]]; then
     else
         output="${RED} \uf244"
     fi
-    echo -e "$output $batLevel%"
+    output="$output $batLevel%"
 
 elif [[ $batStatus == Full ]]; then
-    echo -e "${GREEN} \uf240 $batLevel%"
+    output="${GREEN} \uf240 $batLevel%"
 fi
+
+echo -e "$output${LIGHT_BLUE}"

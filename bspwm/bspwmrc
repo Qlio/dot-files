@@ -4,6 +4,7 @@ ws1= # code
 ws2= # web
 ws3= # main
 ws4= # media
+ws5=• # media
 
 bspc config border_width 1
 bspc config window_gap 0
@@ -14,11 +15,11 @@ bspc config remove_disabled_monitors true
 
 bspc config split_ratio 0.50
 
-bspc monitor eDP1 -d $ws1 $ws2 $ws3 $ws4 5
+bspc monitor eDP1 -d $ws1 $ws2 $ws3 $ws4 $ws5
 bspc monitor HDMI2 -d 6 7 8 9 0
 
 # Startup
 $HOME/.config/bspwm/panel/panel &
 
-# Java things
-wmname LG3D
+# setting background image
+feh --randomize --bg-fill ~/.wallpapers

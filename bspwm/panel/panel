@@ -24,12 +24,12 @@ bspc subscribe report > "$PANEL_FIFO" &
 
 while true; do
     echo "S" \
-        "%{c}" \
         "${LIGHT_BLUE} $(./clock)  " \
         "$(./memory)  " \
         "$(./brightness)  " \
         "$(./volume)  " \
         "$(./battery)" \
+        "$(./network)" \
         "" > "$PANEL_FIFO"
 
 	sleep 0.5s
