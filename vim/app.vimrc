@@ -6,6 +6,9 @@ Bundle 'gmarik/vundle'
 
 ":1 Plugin - Ultisnips
 Plugin 'SirVer/ultisnips'
+let g:UltiSnipsEditSplit="horizontal"
+let g:UltiSnipsSnippetsDir = "~/.dotfiles/vim/UltiSnips"
+let g:UltiSnipsSnippetDirectories=["~/.dotfiles/vim/UltiSnips"]
 
 ":1 Plugin - NERDTree
 Bundle 'scrooloose/nerdtree'
@@ -41,6 +44,7 @@ Plugin 'w0rp/ale'
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
+let g:ale_python_flake8_args="--ignore=E501"
 
 ":1 Plugin - FZF
 set rtp+=~/.fzf
@@ -195,6 +199,9 @@ map <M-1> 1gk
 map <M-2> 2gk
 map <M-3> 3gk
 map <M-4> 4gk
+
+" UltiSnips
+nmap <Leader>z :UltiSnipsEdit<CR>
 
 " FZF
 nmap <Leader>. :Files<CR>

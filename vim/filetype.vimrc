@@ -8,6 +8,7 @@ autocmd BufEnter * if &filetype == 'coffee' |imap <C-s> <ESC>:w<CR>:silent !coff
 
 " Show line in 80th column
 autocmd BufEnter * if &filetype == 'coffee' |let &colorcolumn=join(range(81,81),",") | endif
+
 ":1 Javascript
 autocmd FileType javascript setlocal foldmethod=marker foldmarker=\/\/\:,\/\/\ endfold autoindent
 
@@ -20,6 +21,9 @@ autocmd FileType java setlocal tabstop=4
 
 ":1 Vim (Vimscript)
 autocmd FileType vim setlocal foldmethod=marker foldmarker=\"\:,\"\ endfold
+
+":1 C
+autocmd FileType c setlocal foldmethod=marker foldmarker=\/\/\:,\/\/\ endfold
 
 ":1 Less
 autocmd FileType less setlocal foldmethod=marker foldmarker=\/\/:,\"\ endfold
