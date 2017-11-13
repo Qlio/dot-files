@@ -41,7 +41,7 @@ let NERDTreeIgnore=[
 
 ":1 Plugin - ALE (Asynchronous Lint Engine)
 Plugin 'w0rp/ale'
-let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 let g:ale_python_flake8_args="--ignore=E501"
@@ -111,7 +111,6 @@ function! s:MaybeUpdateLightline()
     call lightline#update()
   end
 endfunction
-" endfold
 
 ":1 Standard (frozen) configurations
 syntax on                              " Enable syntax hightlight
@@ -148,7 +147,6 @@ nmap <CR> za
 " Easy fold toggle for enter key. (Exclude `quickfix` filetype)
 autocmd BufEnter * if &filetype == 'qf' |unmap <CR>|    endif
 autocmd BufEnter * if &filetype != 'qf' | nmap <CR> za| endif
-" endfold
 
 ":1 Aestetic customizations
 
@@ -231,12 +229,8 @@ autocmd BufEnter * imap <C-s> <ESC>:w! <bar> redraw!<CR>
 " Close file
 nmap <C-b> :close<CR>
 imap <C-b> <ESC>:close<CR>
-" endfold
 
 ":1 Automatic commands
-" Change to the directory of the current file
-autocmd BufEnter * silent! lcd %:p:h
-
 " Remove trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
 
