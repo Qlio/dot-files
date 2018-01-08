@@ -1,5 +1,17 @@
-snippet t "A simple html tag"
-<div>
-	Hello World
-</div>
+snippet html "A simple html"
+<!DOCTYPE html>
+<html>
+<head>
+	<title>${1:Simple Title}</title>
+</head>
+	<body>
+	${0}
+	</body>
+</html>
+endsnippet
+
+snippet t "A simple HTML tag" b
+<${1:div}>
+	${0:${VISUAL}}
+</${1/(\w+).*/$1/}>
 endsnippet

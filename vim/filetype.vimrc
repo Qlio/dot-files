@@ -25,6 +25,9 @@ autocmd FileType vim setlocal foldmethod=marker foldmarker=\"\:,\"\ endfold
 ":1 C
 autocmd FileType c setlocal foldmethod=marker foldmarker=\/\/\:,\/\/\ endfold
 
+":1 CSS
+autocmd FileType css setlocal foldmethod=marker foldmarker=\*\:,\*\ endfold
+
 ":1 Less
 autocmd FileType less setlocal foldmethod=marker foldmarker=\/\/:,\"\ endfold
 

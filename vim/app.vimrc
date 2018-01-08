@@ -7,20 +7,20 @@ Bundle 'gmarik/vundle'
 ":1 Plugin - Ultisnips
 Plugin 'SirVer/ultisnips'
 let g:UltiSnipsEditSplit="horizontal"
-let g:UltiSnipsSnippetsDir = "~/.dotfiles/vim/UltiSnips"
+let g:UltiSnipsSnippetsDir="~/.dotfiles/vim/UltiSnips"
 let g:UltiSnipsSnippetDirectories=["~/.dotfiles/vim/UltiSnips"]
+let g:UltiSnipsJumpForwardTrigger="<tab>"
 
 ":1 Plugin - NERDTree
 Bundle 'scrooloose/nerdtree'
 
-" Fast toggle
 map <F2> :NERDTreeToggle<CR>
 
-" Common
 let g:NERDTreeMapOpenVSplit = 'a'
 let g:NERDTreeCaseSensitiveSort = 1
 let g:NERDTreeWinPos = 'right'
 let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeChDirMode = 2
 
 let g:NERDTreeBookmarksFile = $HOME . '/.vim/.nerdtree-bookmarks'
 
@@ -44,7 +44,7 @@ Plugin 'w0rp/ale'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
-let g:ale_python_flake8_args="--ignore=E501"
+let g:ale_python_flake8_args="--ignore=E501,E731"
 
 ":1 Plugin - FZF
 set rtp+=~/.fzf
@@ -193,10 +193,10 @@ set <M-2>=2
 set <M-3>=3
 set <M-4>=4
 
-map <M-1> 1gk
-map <M-2> 2gk
-map <M-3> 3gk
-map <M-4> 4gk
+map <M-1> 1gk:execute 'cd' g:NERDTree.ForCurrentTab().getRoot().path.str()<CR>
+map <M-2> 2gk:execute 'cd' g:NERDTree.ForCurrentTab().getRoot().path.str()<CR>
+map <M-3> 3gk:execute 'cd' g:NERDTree.ForCurrentTab().getRoot().path.str()<CR>
+map <M-4> 4gk:execute 'cd' g:NERDTree.ForCurrentTab().getRoot().path.str()<CR>
 
 " UltiSnips
 nmap <Leader>z :UltiSnipsEdit<CR>
