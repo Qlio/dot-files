@@ -14,13 +14,13 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 ":1 Plugin - NERDTree
 Bundle 'scrooloose/nerdtree'
 
-map <F2> :NERDTreeToggle<CR>
+map <silent><F2> :NERDTreeToggle<CR>
 
-let g:NERDTreeMapOpenVSplit = 'a'
-let g:NERDTreeCaseSensitiveSort = 1
-let g:NERDTreeWinPos = 'right'
-let g:NERDTreeQuitOnOpen = 1
-let g:NERDTreeChDirMode = 2
+let g:NERDTreeMapOpenVSplit='a'
+let g:NERDTreeCaseSensitiveSort=1
+let g:NERDTreeWinPos='right'
+let g:NERDTreeQuitOnOpen=1
+let g:NERDTreeChDirMode=2
 
 let g:NERDTreeBookmarksFile = $HOME . '/.vim/.nerdtree-bookmarks'
 
@@ -193,10 +193,10 @@ set <M-2>=2
 set <M-3>=3
 set <M-4>=4
 
-map <M-1> 1gk:execute 'cd' g:NERDTree.ForCurrentTab().getRoot().path.str()<CR>
-map <M-2> 2gk:execute 'cd' g:NERDTree.ForCurrentTab().getRoot().path.str()<CR>
-map <M-3> 3gk:execute 'cd' g:NERDTree.ForCurrentTab().getRoot().path.str()<CR>
-map <M-4> 4gk:execute 'cd' g:NERDTree.ForCurrentTab().getRoot().path.str()<CR>
+map <M-1> 1gk
+map <M-2> 2gk
+map <M-3> 3gk
+map <M-4> 4gk
 
 " UltiSnips
 nmap <Leader>z :UltiSnipsEdit<CR>
@@ -236,6 +236,9 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Filetype
 autocmd FileType python setlocal foldmethod=syntax foldtext=PythonFoldText()
+
+" Tab
+autocmd TabEnter * silent! :execute 'cd' g:NERDTree.ForCurrentTab().getRoot().path.str()
 
 so $HOME/.vim/dvorak.vimrc
 so $HOME/.vim/filetype.vimrc
