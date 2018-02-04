@@ -71,6 +71,7 @@ let g:lightline = {
 \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
 \ },
 \ 'component_expand': {
+\   'filename': 'LightlineFileName',
 \   'linter_warnings': 'LightlineLinterWarnings',
 \   'linter_errors': 'LightlineLinterErrors',
 \   'linter_ok': 'LightlineLinterOK'
@@ -81,6 +82,10 @@ let g:lightline = {
 \   'linter_errors': 'error'
 \ },
 \ }
+
+function! LightlineFileName() abort
+  return expand('%')
+endfunction
 
 function! LightlineLinterWarnings() abort
   let l:counts = ale#statusline#Count(bufnr(''))
