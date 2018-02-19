@@ -48,9 +48,18 @@ let g:ale_python_flake8_args="--ignore=E501,E731"
 
 ":1 Plugin - FZF
 set rtp+=~/.fzf
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
+
 let g:fzf_layout = { 'down': '~20%' }
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+let $FZF_DEFAULT_COMMAND = 'fd --type f'
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
 ":1 Plugins
 " Features
@@ -210,6 +219,7 @@ nmap <Leader>z :UltiSnipsEdit<CR>
 " FZF
 nmap <Leader>. :Files<CR>
 nmap <Leader>b :Buffers<CR>
+nmap <Leader>g :Rg<CR>
 
 " Keymap switch
 let g:current_keymap = ''
