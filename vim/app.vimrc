@@ -50,7 +50,7 @@ let g:ale_python_flake8_args="--ignore=E501,E731"
 set rtp+=~/.fzf
 Plugin 'junegunn/fzf.vim'
 let g:fzf_layout = { 'down': '~20%' }
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 ":1 Plugins
 " Features
@@ -60,6 +60,7 @@ Plugin 'posva/vim-vue'
 Bundle 'hynek/vim-python-pep8-indent'
 Plugin 'pangloss/vim-javascript'
 Plugin 'wavded/vim-stylus'
+Plugin 'leafgarland/typescript-vim'
 
 Plugin 'itchyny/lightline.vim'
 " Lightline
