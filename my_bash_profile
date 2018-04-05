@@ -60,8 +60,37 @@ alias gll="git log --stat --max-count=3"
 
 # SoundCloud App
 PATH=$PATH:/opt/soundcloud
-PATH=/opt/soundcloud:$PATH
-PATH=/home/qlio/.composer/vendor/bin:$PATH
+PATH=$PATH:/home/qlio/Android/Sdk/tools
+PATH=$PATH:/opt/soundcloud
+PATH=$PATH:/home/qlio/.composer/vendor/bin
+PATH=$PATH:/opt/android-studio/jre/bin
+PATH=$PATH:/opt/android-studio/gradle/gradle-4.1/bin/
+PATH=$PATH:$(ruby -e 'print Gem.user_dir')/bin
+
+export ANDROID_HOME=/home/qlio/Android/Sdk
+PATH=$PATH:$ANDROID_HOME
+
+# Bash prompt
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+virtualenv_info() {
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        venv="${VIRTUAL_ENV##*/}"
+    else
+        venv=''
+    fi
+    [[ -n "$venv" ]] && echo "($venv) "
+}
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+WHITE='\[\033[00m\]';
+GREEN='\[\033[32m\]';
+BROWN='\[\033[33m\]';
+VENV="\$(virtualenv_info)";
+PS1="${VENV}[\u@\h]${GREEN}[\w]${BROWN}\$(parse_git_branch)${WHITE}\n$ "
+
+# ruby
+export GEM_HOME=$HOME/.gem
 
 export LANG=en_US.UTF-8
 
@@ -77,3 +106,5 @@ fi
 
 # keyboard rate
 xset r rate 200 30
+
+export CHROME_BIN=chromium
