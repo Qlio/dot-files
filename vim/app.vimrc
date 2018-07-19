@@ -8,7 +8,7 @@ Bundle 'gmarik/vundle'
 Plugin 'SirVer/ultisnips'
 let g:UltiSnipsEditSplit="horizontal"
 let g:UltiSnipsSnippetsDir="~/.dotfiles/vim/UltiSnips"
-let g:UltiSnipsSnippetDirectories=["~/.dotfiles/vim/UltiSnips"]
+let g:UltiSnipsSnippetDirectories=['/home/qlio/.dotfiles/vim/UltiSnips', 'UltiSnips']
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 
 ":1 Plugin - NERDTree
@@ -27,6 +27,7 @@ let g:NERDTreeBookmarksFile = $HOME . '/.vim/.nerdtree-bookmarks'
 let NERDTreeIgnore=[
       \'\.jar$',
       \'\.db$',
+      \'__pycache__$',
       \'AndroidStudioProjects',
       \'EffectiveAndroidUI',
       \'VirtualBox VMs',
@@ -64,12 +65,15 @@ command! -bang -nargs=* Rg
 ":1 Plugins
 " Features
 Bundle 'godlygeek/tabular'
-
 Plugin 'posva/vim-vue'
 Bundle 'hynek/vim-python-pep8-indent'
 Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 Plugin 'wavded/vim-stylus'
 Plugin 'leafgarland/typescript-vim'
+
+Plugin 'fisadev/vim-isort'
+let g:vim_isort_python_version = 'python3'
 
 Plugin 'itchyny/lightline.vim'
 " Lightline
@@ -187,6 +191,9 @@ let g:maplocalleader = ','
 
 " Shortcut to rapidly toggle 'set wrap'
 nmap <leader>r :set wrap!<CR>
+
+" isort
+nmap <leader>s :Isort<CR>
 
 " Easy indent
 nmap > >>
