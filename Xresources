@@ -1,3 +1,7 @@
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: true
+URxvt*scrollTtyKeypress: true
+
 Xft*antialias: true
 
 URxvt*font: xft:Monaco:medium:size=9
