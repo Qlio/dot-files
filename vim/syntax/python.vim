@@ -37,7 +37,7 @@ syn keyword pythonRepeat	for while
 syn keyword pythonOperator	and in is not or
 syn keyword pythonException	except finally raise try
 syn keyword pythonAsync		async await
-syn match pythonIncludeStatement	/\%(^\s*from\s\|import\s\)/
+syn match pythonIncludeStatement	/\%(\<from\>\|\<import\>\)/
 syn match pythonDefStatement	/^\s*\%(def\s\|class\s\)/ nextgroup=pythonFunction skipwhite
 
 " Decorators (new in Python 2.4)
@@ -69,7 +69,7 @@ syn match   pythonMatrixMultiply
 syn region  pythonClassFold	start="\%(^\s*\n\)\@<=\z(\s*\)\%(@\|def\s\|class\s\)"
       \ skip="\%(^\s*\n^\s*\n\)\ze\z1\S"
       \ end="\%(^\s*\n\)\ze\%(\z1\S\|^\s*\n\)" fold transparent
-syn region  pythonIncludeFold	start="\zs\%(^\s*from\|import\)\s"
+syn region  pythonIncludeFold	start="\zs\%(^\s*from\|^\s*import\)\s"
       \ end="\n\n" fold transparent
       \ contains=pythonIncludeStatement,pythonString,pythonComment
 
