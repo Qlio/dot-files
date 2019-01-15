@@ -1,0 +1,7 @@
+alsa-utils
+acpi
+bspwm
+sxhkd
+feh
+python-pip
+vim

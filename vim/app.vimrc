@@ -1,8 +1,8 @@
 ":1 Vundle setup
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 ":1 Plugin - Ultisnips
 Plugin 'SirVer/ultisnips'

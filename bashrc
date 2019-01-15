@@ -1,3 +1,9 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '
+
 export XDG_CONFIG_HOME="$HOME/.config"
 export WALLPAPRES_DIR="$HOME/.wallpapers"
 
@@ -59,13 +65,10 @@ alias gll="git log --stat --max-count=3"
 # PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 # SoundCloud App
-PATH=$PATH:/opt/soundcloud
 PATH=$PATH:/home/qlio/Android/Sdk/tools
-PATH=$PATH:/opt/soundcloud
 PATH=$PATH:/home/qlio/.composer/vendor/bin
 PATH=$PATH:/opt/android-studio/jre/bin
 PATH=$PATH:/opt/android-studio/gradle/gradle-4.1/bin/
-PATH=$PATH:$(ruby -e 'print Gem.user_dir')/bin
 
 export ANDROID_HOME=/home/qlio/Android/Sdk
 PATH=$PATH:$ANDROID_HOME
@@ -100,11 +103,7 @@ export PROMPT_COMMAND='history -a'
 export PANEL_FIFO='/tmp/panel-fifo'
 export VISUAL='vim'
 
-if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-  exec startx
-fi
+export CHROME_BIN=chromium
 
 # keyboard rate
 xset r rate 200 30
-
-export CHROME_BIN=chromium
