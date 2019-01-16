@@ -28,6 +28,7 @@ let NERDTreeIgnore=[
       \'\.jar$',
       \'\.db$',
       \'__pycache__$',
+      \'node_modules',
       \'AndroidStudioProjects',
       \'EffectiveAndroidUI',
       \'VirtualBox VMs',
@@ -48,8 +49,7 @@ let g:ale_sign_warning = '⚠'
 let g:ale_python_flake8_args="--ignore=E501,E731"
 
 ":1 Plugin - FZF
-set rtp+=~/.fzf
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 
 let g:fzf_layout = { 'down': '~20%' }
@@ -61,6 +61,9 @@ command! -bang -nargs=* Rg
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
+
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 ":1 Plugins
 " Features
