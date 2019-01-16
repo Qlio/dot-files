@@ -29,7 +29,7 @@ XF86AudioMute
 XF86Audio{Raise,Lower}Volume
   amixer set Master 5%{+,-}
 
-XF86Audio{Next,Previous,Play}
+XF86Audio{Next,Prev,Play}
   dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.{Next,Previous,PlayPause}
 
 ctrl + {Right,Left,Up}
@@ -93,3 +93,8 @@ super + alt + {h,j,k,l}
 # contract the tiled space in the given direction
 super + alt + shift + {h,j,k,l}
   bspc node {@east -r -10,@north -r +10,@south -r -10,@west -r +10}
+
+
+# Others
+alt + F7
+  feh --randomize --bg-fill ~/.wallpapers
