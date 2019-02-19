@@ -31,6 +31,9 @@ autocmd FileType css setlocal foldmethod=marker foldmarker=\*\:,\*\ endfold
 ":1 Less
 autocmd FileType less setlocal foldmethod=marker foldmarker=\/\/:,\"\ endfold
 
+":1 Vue
+autocmd FileType vue setlocal foldmethod=marker foldmarker=\<\!\-\-\ \:,\<\!\-\-\ \endfold
+
 ":1 Tab configuration for filetypes
 " no tab use. tab = 4 space
 autocmd FileType python,sh
