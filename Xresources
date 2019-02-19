@@ -5,7 +5,7 @@ URxvt*scrollTtyKeypress: true
 Xft*antialias: true
 
 URxvt*font: xft:Monaco:medium:size=8, xft:FontAwesome, xft:Dejavu
-URxvt*letterSpace: 1
+URxvt*letterSpace: 0
 URxvt.background: #3f3f3f
 URxvt.foreground: #dcdccc
 
@@ -35,3 +35,5 @@ URxvt.           Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
 
 URxvt.charClass: 33:48,36-38:48,43-47:48,58:48,61:48,63-64:48,126:48
 URxvt.metaSendsEscape: true
+URxvt.keysym.C-T: command:\033]720;3\007
+URxvt.keysym.C-H: command:\033]721;3\007
