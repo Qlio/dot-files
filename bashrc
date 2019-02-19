@@ -6,6 +6,7 @@ PS1='[\u@\h \W]\$ '
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export WALLPAPRES_DIR="$HOME/.wallpapers"
+export HISTCONTROL=ignoredups:erasedups
 
 alias ll='ls -laF'
 
