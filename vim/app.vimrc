@@ -7,8 +7,8 @@ Plugin 'VundleVim/Vundle.vim'
 ":1 Plugin - Ultisnips
 Plugin 'SirVer/ultisnips'
 let g:UltiSnipsEditSplit="horizontal"
-let g:UltiSnipsSnippetsDir="~/.dotfiles/vim/UltiSnips"
-let g:UltiSnipsSnippetDirectories=['/home/qlio/.dotfiles/vim/UltiSnips', 'UltiSnips']
+let g:UltiSnipsSnippetsDir="~/.config/vim/UltiSnips"
+let g:UltiSnipsSnippetDirectories=['/home/qlio/.config/vim/UltiSnips', 'UltiSnips']
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 
 ":1 Plugin - NERDTree
@@ -74,6 +74,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'wavded/vim-stylus'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'wakatime/vim-wakatime'
 
 Plugin 'fisadev/vim-isort'
 let g:vim_isort_python_version = 'python3'
