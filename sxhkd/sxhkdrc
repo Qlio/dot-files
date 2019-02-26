@@ -20,14 +20,14 @@ ctrl + {_,shift +} w
 
 # Backlight
 XF86MonBrightness{Up,Down}
-  xbacklight -{inc,dec} 10
+  changeBrightness -{inc,dec} 10
 
 # Audio
 XF86AudioMute
-  amixer set Master toggle
+  changeVolume toggle
 
 XF86Audio{Raise,Lower}Volume
-  amixer set Master 5%{+,-}
+  changeVolume 5%{+,-}
 
 XF86Audio{Next,Prev,Play}
   dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.{Next,Previous,PlayPause}

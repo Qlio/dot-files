@@ -1,0 +1,7 @@
+#!/bin/bash
+msgId="981141"
+xbacklight -time 0 -steps 1 "$@"
+exactBrightness=$(xbacklight -get)
+brightness=$(python3 -c "print(int(${exactBrightness}))")
+dunstify -a "changeBrightness" -u low -i display-brightness-symbolic.symbolic -r "$msgId" \
+"Brightness: ${brightness}%" "$(getProgressString 10 "• " "◦ " $exactBrightness)"

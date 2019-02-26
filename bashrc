@@ -65,7 +65,6 @@ alias gll="git log --stat --max-count=3"
 
 # PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
-# SoundCloud App
 PATH=$PATH:/home/qlio/Android/Sdk/tools
 PATH=$PATH:/home/qlio/.composer/vendor/bin
 PATH=$PATH:/opt/android-studio/jre/bin
@@ -105,6 +104,9 @@ export PANEL_FIFO='/tmp/panel-fifo'
 export VISUAL='vim'
 
 export CHROME_BIN=chromium
+
+# Utils
+source $HOME/.config/utils/init
 
 # keyboard rate
 xset r rate 200 30
