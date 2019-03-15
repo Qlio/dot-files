@@ -18,6 +18,12 @@ function! g:PythonFoldText()
     return repeat(' ', l:indent) . 'import ' . substitute(l:line, '^.*import\s', '', '')
   endif
 
+  if l:line =~# '\s*@'
+    let l:indent = indent(v:foldstart)
+    let l:nextline = getline(v:foldstart + 1)
+    return repeat(' ', l:indent) . '@' . l:nextline[l:indent:]
+  endif
+
   return l:line
 
 endfunction
