@@ -20,7 +20,11 @@ function! g:PythonFoldText()
 
   if l:line =~# '\s*@'
     let l:indent = indent(v:foldstart)
-    let l:nextline = getline(v:foldstart + 1)
+    let l:nextlinenum = v:foldstart + 1
+    while getline(l:nextlinenum) !~# '\s*\(def \|class \)'
+      let l:nextlinenum = l:nextlinenum + 1
+    endwhile
+    let l:nextline = getline(l:nextlinenum)
     return repeat(' ', l:indent) . '@' . l:nextline[l:indent:]
   endif
 

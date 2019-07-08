@@ -15,3 +15,7 @@ snippet t "A simple HTML tag" b
 	${0:${VISUAL}}
 </${1/(\w+).*/$1/}>
 endsnippet
+
+snippet ti "A simple HTML tag" b
+<${1:div}>${0:${VISUAL}}</${1/(\w+).*/$1/}>
+endsnippet

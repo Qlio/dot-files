@@ -75,9 +75,13 @@ Plugin 'mxw/vim-jsx'
 Plugin 'wavded/vim-stylus'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'wakatime/vim-wakatime'
+Bundle 'christoomey/vim-sort-motion'
+Plugin 'machakann/vim-swap'
 
 Plugin 'fisadev/vim-isort'
 let g:vim_isort_python_version = 'python3'
+let g:vim_isort_config_overrides = {'line_length': 120}
+let g:vue_disable_pre_processors = 0
 
 Plugin 'itchyny/lightline.vim'
 " Lightline
@@ -155,6 +159,10 @@ set wildmenu                           " Show autocomplete menus
 set autoread                           " Auto update if changed outside of Vim
 set noerrorbells novisualbell          " No sound on errors
 set backspace=indent,eol,start         " Allow backspace in insert mode
+set lazyredraw                         " Do not redraw screen in the middle of a macro. Makes them complete faster.
+set ignorecase                         " Searches are case insensitive
+set smartcase                          " Searches with a capital characters are case sensitive.
+set undofile                           " Persistent undo
 
 ":1 Configurations may change
 set numberwidth=4                      " Line number width
@@ -250,8 +258,8 @@ map <C-l> :call ToggleKeymap()<CR>
 " Save file
 " Need 'stty -ixon' command in shell (CLI).
 " more: http://superuser.com/questions/227588/vim-command-line-imap-problem
-autocmd BufEnter * nmap <C-s> :w! <bar> redraw!<CR>
-autocmd BufEnter * imap <C-s> <ESC>:w! <bar> redraw!<CR>
+autocmd BufEnter * nmap <C-s> :w! <bar> syntax sync fromstart<CR>
+autocmd BufEnter * imap <C-s> <ESC>:w! <bar> syntax sync fromstart<CR>
 
 " Close file
 nmap <C-b> :close<CR>
