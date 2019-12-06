@@ -19,8 +19,12 @@ autocmd FileType java setlocal foldmethod=syntax
 autocmd FileType java setlocal shiftwidth=4
 autocmd FileType java setlocal tabstop=4
 
+
 ":1 Vim (Vimscript)
 autocmd FileType vim setlocal foldmethod=marker foldmarker=\"\:,\"\ endfold
+
+":1 Typescript
+autocmd FileType typescript nmap <leader>s :ALEOrganizeImports<CR>
 
 ":1 C
 autocmd FileType c setlocal foldmethod=marker foldmarker=\/\/\:,\/\/\ endfold
@@ -34,9 +38,18 @@ autocmd FileType less setlocal foldmethod=marker foldmarker=\/\/:,\"\ endfold
 ":1 Vue
 autocmd FileType vue setlocal foldmethod=marker foldmarker=\<\!\-\-\ \:,\<\!\-\-\ \endfold
 
+":1 Dart
+autocmd FileType dart nnoremap <leader>f :DartFmt<cr>
+
+":1 Dart
+autocmd FileType dart nnoremap <leader>f :DartFmt<cr>
+
+":1 Python
+autocmd FileType python nmap <leader>s :Isort<CR>
+
 ":1 Tab configuration for filetypes
 " no tab use. tab = 4 space
-autocmd FileType python,sh
+autocmd FileType python,sh,typescript,gdscript3
   \ setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 " no tab use. tab = 2 space

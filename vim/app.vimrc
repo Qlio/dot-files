@@ -43,10 +43,30 @@ let NERDTreeIgnore=[
 
 ":1 Plugin - ALE (Asynchronous Lint Engine)
 Plugin 'w0rp/ale'
+let g:ale_completion_enabled = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
-let g:ale_python_flake8_args="--ignore=E501,E731"
+let g:ale_python_flake8_args = '--ignore=E501,E731'
+let g:ale_typescript_tsc_fname = ''
+let g:ale_completion_tsserver_autoimport = 1
+let g:ale_java_eclipselsp_path = '/home/qlio/.lsp/eclipse.jdt.ls'
+let g:ale_java_eclipselsp_config_path = '/home/qlio/.lsp/eclipse.jdt.ls/config_linux'
+let g:ale_fix_on_save = 1
+
+let g:ale_linters = {
+      \ 'javascript': ['eslint'],
+      \ 'python': ['flake8'],
+      \ 'java': ['eclipselsp'],
+      \ 'dart': ['language_server'],
+      \ }
+let g:ale_fixers = {
+      \   'dart': ['dartfmt'],
+      \}
+let g:ale_dart_dartanalyzer_executable = 'dartanalyzer'
+let g:ale_dart_dartfmt_options = '-l 120'
+nmap <C-]> :ALEGoToDefinition<cr>
+
 
 ":1 Plugin - FZF
 Plugin 'junegunn/fzf'
@@ -64,7 +84,6 @@ command! -bang -nargs=* Rg
 
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
 ":1 Plugins
 " Features
 Bundle 'godlygeek/tabular'
@@ -76,7 +95,12 @@ Plugin 'wavded/vim-stylus'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'wakatime/vim-wakatime'
 Bundle 'christoomey/vim-sort-motion'
-Plugin 'machakann/vim-swap'
+Plugin 'dart-lang/dart-vim-plugin'
+
+Plugin 'mattn/emmet-vim'
+let g:user_emmet_leader_key=','
+
+Plugin 'calviken/vim-gdscript3'
 
 Plugin 'fisadev/vim-isort'
 let g:vim_isort_python_version = 'python3'
@@ -203,9 +227,6 @@ let g:maplocalleader = ','
 
 " Shortcut to rapidly toggle 'set wrap'
 nmap <leader>r :set wrap!<CR>
-
-" isort
-nmap <leader>s :Isort<CR>
 
 " Easy indent
 nmap > >>
