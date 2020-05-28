@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo -e "%{A:bluetoothctl -- connect 90:7F:61:2A:D3:7F}\uf11c%{A}"
+

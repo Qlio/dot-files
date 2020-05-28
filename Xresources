@@ -4,7 +4,7 @@ URxvt*scrollTtyKeypress: true
 
 Xft*antialias: true
 
-URxvt*font: xft:Monaco:medium:size=8, xft:FontAwesome, xft:Dejavu
+URxvt*font: xft:Monaco:medium:size=8, xft:FontAwesome, xft:Dejavu, xft:SourceHanSansJP
 URxvt*letterSpace: 0
 URxvt.background: #3f3f3f
 URxvt.foreground: #dcdccc
@@ -18,7 +18,8 @@ URxvt.color5: #dc8cc3
 URxvt.color6: #8cd0d3
 URxvt.color7: #dcdccc
 URxvt.color8: #709080
-URxvt.color9: #dca3a3
+URxvt.color9: #de3333
+! URxvt.color9: #dca3a3
 URxvt.color10: #c3bf9f
 URxvt.color11: #f0dfaf
 URxvt.color12: #94bff3
@@ -37,3 +38,12 @@ URxvt.charClass: 33:48,36-38:48,43-47:48,58:48,61:48,63-64:48,126:48
 URxvt.metaSendsEscape: true
 URxvt.keysym.C-T: command:\033]720;3\007
 URxvt.keysym.C-H: command:\033]721;3\007
+URxvt.keysym.C-P: fc -s | yank -- xsel -b
+
+URxvt.perl-ext-common: font-size,keyboard-select
+URxvt.keysym.C-S-Up:   font-size:increase
+URxvt.keysym.C-S-Down: font-size:decrease
+
+URxvt.keysym.M-s: perl:keyboard-select:activate
+URxvt.keysym.M-slash: perl:keyboard-select:search
+URxvt.keyboard-select.clipboard: true

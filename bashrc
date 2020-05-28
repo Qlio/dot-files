@@ -1,12 +1,15 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+alias k='kubectl'
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export WALLPAPRES_DIR="$HOME/.wallpapers"
 export HISTCONTROL=ignoredups:erasedups
+export HISTFILESIZE=1000
+export HISTSIZE=1000
 
 alias ll='ls -laF'
 
@@ -63,14 +66,15 @@ alias gsii='git ls-files --others'
 alias gl="git log -n 10 --pretty=format:\"%Cgreen%h %Creset%s %C(blue)by %an (%ar) %Cred %d\" --graph"
 alias gll="git log --stat --max-count=3"
 
-# PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+# Java
+export _JAVA_AWT_WM_NONREPARENTING=1
 
-PATH=$PATH:/home/qlio/Android/Sdk/tools
+PATH=$PATH:/opt/android-sdk/tools
 PATH=$PATH:/home/qlio/.composer/vendor/bin
 PATH=$PATH:/opt/android-studio/jre/bin
 PATH=$PATH:/opt/android-studio/gradle/gradle-4.1/bin/
 
-export ANDROID_HOME=/home/qlio/Android/Sdk
+export ANDROID_HOME=/opt/android-sdk
 PATH=$PATH:$ANDROID_HOME
 
 # Bash prompt
@@ -93,12 +97,10 @@ VENV="\$(virtualenv_info)";
 PS1="${VENV}[\u@\h]${GREEN}[\w]${BROWN}\$(parse_git_branch)${WHITE}\n$ "
 
 # ruby
-export GEM_HOME=$HOME/.gem
+# export GEM_HOME=$HOME/.gem
+# export PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
 
 export LANG=en_US.UTF-8
-
-# save history of all terminal
-export PROMPT_COMMAND='history -a'
 
 export PANEL_FIFO='/tmp/panel-fifo'
 export VISUAL='vim'
@@ -110,3 +112,14 @@ source $HOME/.config/utils/init
 
 # keyboard rate
 xset r rate 200 30
+
+source <(kubectl completion bash)
+# xinput set-prop "Compx 2.4G Receiver Mouse" "libinput Accel Speed" -0.8
+# xrandr --auto --output eDP1 --right-of HDMI1
+# bspc wm -O eDP-1 HDMI-1
+
+eval $(thefuck --alias)
+export http_proxy=''
+export https_proxy=''
+export ftp_proxy=''
+export socks_proxy=''

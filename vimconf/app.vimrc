@@ -43,30 +43,53 @@ let NERDTreeIgnore=[
 
 ":1 Plugin - ALE (Asynchronous Lint Engine)
 Plugin 'w0rp/ale'
+
 let g:ale_completion_enabled = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
-let g:ale_python_flake8_args = '--ignore=E501,E731'
 let g:ale_typescript_tsc_fname = ''
 let g:ale_completion_tsserver_autoimport = 1
-let g:ale_java_eclipselsp_path = '/home/qlio/.lsp/eclipse.jdt.ls'
-let g:ale_java_eclipselsp_config_path = '/home/qlio/.lsp/eclipse.jdt.ls/config_linux'
+let g:ale_python_flake8_change_directory = 0
 let g:ale_fix_on_save = 1
 
 let g:ale_linters = {
       \ 'javascript': ['eslint'],
       \ 'python': ['flake8'],
-      \ 'java': ['eclipselsp'],
       \ 'dart': ['language_server'],
+      \ 'java': [],
       \ }
 let g:ale_fixers = {
       \   'dart': ['dartfmt'],
       \}
 let g:ale_dart_dartanalyzer_executable = 'dartanalyzer'
 let g:ale_dart_dartfmt_options = '-l 120'
-nmap <C-]> :ALEGoToDefinition<cr>
 
+
+":1 Plugin - COC
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_node_path = '/usr/bin/node'
+
+set hidden          " TextEdit might fail if hidden is not set.
+set nobackup        " Some servers have issues with backup files, see #649.
+set nowritebackup   " Some servers have issues with backup files, see #649.
+set cmdheight=2     " Give more space for displaying messages.
+set updatetime=300  " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
+set shortmess+=c    " Don't pass messages to |ins-completion-menu|.
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <C-n> pumvisible() ? "\<C-n>" : coc#refresh()
+
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" GoTo code navigation.
+nmap <silent> <c-]> <Plug>(coc-definition)
 
 ":1 Plugin - FZF
 Plugin 'junegunn/fzf'
@@ -96,6 +119,7 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'wakatime/vim-wakatime'
 Bundle 'christoomey/vim-sort-motion'
 Plugin 'dart-lang/dart-vim-plugin'
+Plugin 'vimwiki/vimwiki'
 
 Plugin 'mattn/emmet-vim'
 let g:user_emmet_leader_key=','

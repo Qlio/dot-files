@@ -30,12 +30,13 @@ while true; do
         "$(./volume)  " \
         "$(./battery)" \
         "$(./network)" \
+        "$(./bluetooth-keyboard-connector)  " \
         "" > "$PANEL_FIFO"
 
 	sleep 5s
 done &
 
-./panel_bar < "$PANEL_FIFO" | lemonbar -a 12 \
+./panel_bar < "$PANEL_FIFO" | lemonbar -a 13 \
     -f "FontAwesome:size=10" \
     -f "Monaco:size=9" \
      x"$PANEL_HEIGHT" \

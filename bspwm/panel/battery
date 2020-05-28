@@ -1,9 +1,9 @@
 #!/bin/bash
 
-source $(dirname $)/config
+source $HOME/.config/bspwm/panel/config
 
-batStatus=$(acpi --battery | awk '{gsub(/,/, ""); print $3}')
-batLevel=$(acpi --battery | awk '{gsub(/[,%]/, ""); print $4}')
+batStatus=$(acpi --battery | awk 'NR==1{gsub(/,/, ""); print $3}')
+batLevel=$(acpi --battery | awk 'NR==1{gsub(/[,%]/, ""); print $4}')
 
 output=""
 
@@ -24,6 +24,7 @@ elif [[ $batStatus == Discharging ]]; then
         output="${GREEN} \uf243"
     else
         output="${RED} \uf244"
+        COLOUR_BACKGROUND='#FFFFFFFF'
     fi
     output="$output $batLevel%"
 
