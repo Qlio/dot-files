@@ -4,7 +4,7 @@ URxvt*scrollTtyKeypress: true
 
 Xft*antialias: true
 
-URxvt*font: xft:Monaco:medium:size=8, xft:FontAwesome, xft:Dejavu, xft:SourceHanSansJP
+URxvt*font: xft:Monaco:medium:size=8, xft:Inconsolata Nerd Font Mono:size=11, xft:Dejavu, xft:SourceHanSansJP
 URxvt*letterSpace: 0
 URxvt.background: #3f3f3f
 URxvt.foreground: #dcdccc
