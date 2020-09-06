@@ -1,7 +1,21 @@
 *
 
 !.gitignore
-vimconf/bundle/
-chromium/
-spotify/
-godot/
+!bspwm/
+!bspwm/**
+!alacrity/
+!dunst/
+!polybar/
+!ranger/*
+!sxhkd/*
+!thefuck/*
+!utils/*
+!vimconf/*
+!vimwiki/*
+!00-keyboard.conf
+!01-touchpad.conf
+!README.md
+!Xresources
+!bash_profile
+!bashrc
+!pacman-requirements.txt

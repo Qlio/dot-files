@@ -1,6 +1,6 @@
 #! /bin/bash
 
-lvl=$(amixer get Master | awk 'END { gsub(/[%\[\]]/, ""); print $4 }')
+lvl=$(amixer get Master | awk 'END { gsub(/[%\[\]]/, ""); print $5 }')
 
 if [[ $lvl -gt 50 ]]; then
     icon="\uf028"
