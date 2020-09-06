@@ -1,1 +1,7 @@
+*
+
+!.gitignore
 vimconf/bundle/
+chromium/
+spotify/
+godot/

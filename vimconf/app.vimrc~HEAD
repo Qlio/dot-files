@@ -43,6 +43,7 @@ let NERDTreeIgnore=[
 
 ":1 Plugin - ALE (Asynchronous Lint Engine)
 Plugin 'w0rp/ale'
+<<<<<<< HEAD:vimconf/app.vimrc
 
 let g:ale_completion_enabled = 1
 let g:ale_lint_on_text_changed = 'never'
@@ -64,6 +65,38 @@ let g:ale_fixers = {
       \}
 let g:ale_dart_dartanalyzer_executable = 'dartanalyzer'
 let g:ale_dart_dartfmt_options = '-l 120'
+
+=======
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
+let g:ale_python_flake8_args="--ignore=E501,E731"
+>>>>>>> parent of da234b0... vi configurations:vim/app.vimrc
+
+":1 Plugin - COC
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_node_path = '/usr/bin/node'
+
+set hidden          " TextEdit might fail if hidden is not set.
+set nobackup        " Some servers have issues with backup files, see #649.
+set nowritebackup   " Some servers have issues with backup files, see #649.
+set cmdheight=2     " Give more space for displaying messages.
+set updatetime=300  " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
+set shortmess+=c    " Don't pass messages to |ins-completion-menu|.
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <C-n> pumvisible() ? "\<C-n>" : coc#refresh()
+
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" GoTo code navigation.
+nmap <silent> <c-]> <Plug>(coc-definition)
 
 ":1 Plugin - FZF
 Plugin 'junegunn/fzf'
@@ -91,15 +124,19 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'wavded/vim-stylus'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'wakatime/vim-wakatime'
 Bundle 'christoomey/vim-sort-motion'
+<<<<<<< HEAD:vimconf/app.vimrc
 Plugin 'dart-lang/dart-vim-plugin'
-Plugin 'calviken/vim-gdscript3'
-
 Plugin 'vimwiki/vimwiki'
-let g:vimwiki_list = [{'path': '~/.config/vimwiki', 'path_html': '~/.config/vimwiki'}]
 
 Plugin 'mattn/emmet-vim'
 let g:user_emmet_leader_key=','
+
+Plugin 'calviken/vim-gdscript3'
+=======
+Plugin 'machakann/vim-swap'
+>>>>>>> parent of da234b0... vi configurations:vim/app.vimrc
 
 Plugin 'fisadev/vim-isort'
 let g:vim_isort_python_version = 'python3'
@@ -168,7 +205,6 @@ filetype off                           " Disable file type detection
 filetype plugin on                     " Enable plugins
 filetype indent on                     " Enable indent
 
-set background=dark                    " Always use dark background
 set nocompatible                       " Enable VIM features
 set number                             " Enable line numbers
 set autoindent                         " Enable auto indent
@@ -227,6 +263,9 @@ let g:maplocalleader = ','
 
 " Shortcut to rapidly toggle 'set wrap'
 nmap <leader>r :set wrap!<CR>
+
+" isort
+nmap <leader>s :Isort<CR>
 
 " Easy indent
 nmap > >>

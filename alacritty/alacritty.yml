@@ -1,0 +1,61 @@
+font:
+  size: 5.0
+  normal:
+    family: Monaco
+    style: Regular
+
+colors:
+  cursor:
+    text: '#fefff2'
+    cursor: '#ffffff'
+
+  selection:
+    text: '#000000'
+    background: '#ffffff'
+
+  primary:
+    background: '#3f3f3f'
+    foreground: '#dcdcdc'
+
+  normal:
+    black:   '#3f3f3f'
+    red:     '#fa8072'
+    green:   '#98fb98'
+    yellow:  '#dfaf8f'
+    blue:    '#94bff3'
+    magenta: '#dc8cc3'
+    cyan:    '#93e0e3'
+    white:   '#dcdccc'
+
+  bright:
+    black:   '#dcdccc'
+    red:     '#de3333'
+    green:   '#c3bf9f'
+    yellow:  '#f0dfaf'
+    blue:    '#94bff3'
+    magenta: '#ec93d3'
+    cyan:    '#93e0e3'
+    white:   '#ffffff'
+
+  dim:
+    black:   '#dcdccc'
+    red:     '#de3333'
+    green:   '#c3bf9f'
+    yellow:  '#f0dfaf'
+    blue:    '#94bff3'
+    magenta: '#ec93d3'
+    cyan:    '#93e0e3'
+    white:   '#ffffff'
+
+key_bindings:
+  - { key: Return, mods: Alt, action: SpawnNewInstance }
+  - { key: Up,     mods: Control|Shift, action: IncreaseFontSize }
+  - { key: Down,     mods: Control|Shift, action: DecreaseFontSize }
+
+  - { mode: Vi,    key: T,     action: Up }
+  - { mode: Vi,    key: H,     action: Down }
+  - { mode: Vi,    key: N,     action: Right }
+  - { mode: Vi,    key: D,     action: Left }
+
+  - { mode: Vi,    key: D,     mods: Shift,  action: First }
+  - { mode: Vi,    key: N,     mods: Shift,  action: Last }

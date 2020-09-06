@@ -1,0 +1,10 @@
+startuppopupversion: 1
+keybinding:
+  universal:
+    prevItem-alt: 't'
+    nextItem-alt: 'h'
+    prevBlock-alt: 'T' # goto the previous block / panel
+    nextBlock-alt: 'H' # goto the next block / panel
+  commits:
+    revert-commit: 'y'
+    tag-commit: 'Y'

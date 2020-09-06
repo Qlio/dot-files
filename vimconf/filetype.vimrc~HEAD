@@ -19,25 +19,22 @@ autocmd FileType java setlocal foldmethod=syntax
 autocmd FileType java setlocal shiftwidth=4
 autocmd FileType java setlocal tabstop=4
 
-
 ":1 Vim (Vimscript)
 autocmd FileType vim setlocal foldmethod=marker foldmarker=\"\:,\"\ endfold
-
-":1 Typescript
-autocmd FileType typescript nmap <leader>s :ALEOrganizeImports<CR>
 
 ":1 C
 autocmd FileType c setlocal foldmethod=marker foldmarker=\/\/\:,\/\/\ endfold
 
-":1 CSS, SASS, SCSS
-autocmd FileType css,scss,sass setlocal foldmethod=marker foldmarker=\*\:,\*\ endfold
+":1 CSS
+autocmd FileType css setlocal foldmethod=marker foldmarker=\*\:,\*\ endfold
 
 ":1 Less
 autocmd FileType less setlocal foldmethod=marker foldmarker=\/\/:,\"\ endfold
 
-":1 Vue, HTML
-autocmd FileType vue,html setlocal foldmethod=marker foldmarker=\<\!\-\-\ \:,\<\!\-\-\ \endfold
+":1 Vue
+autocmd FileType vue setlocal foldmethod=marker foldmarker=\<\!\-\-\ \:,\<\!\-\-\ \endfold
 
+<<<<<<< HEAD:vimconf/filetype.vimrc
 ":1 Dart
 autocmd FileType dart nnoremap <leader>f :DartFmt<cr>
 
@@ -48,11 +45,13 @@ autocmd FileType dart nnoremap <leader>f :DartFmt<cr>
 autocmd FileType python nmap <leader>s :Isort<CR>
 
 ":1 Java
-autocmd FileType java nmap <leader>s :call CocAction('runCommand', 'java.action.organizeImports')<CR>
+autocmd FileType java nmap <leader>s :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 
+=======
+>>>>>>> parent of da234b0... vi configurations:vim/filetype.vimrc
 ":1 Tab configuration for filetypes
 " no tab use. tab = 4 space
-autocmd FileType python,sh,typescript,gdscript3
+autocmd FileType python,sh
   \ setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 " no tab use. tab = 2 space

@@ -3,8 +3,8 @@
 #
 
 # terminal emulator
-alt + Return
-  urxvt
+ctrl + shift + Return
+  alacritty
 
 # program launcher
 alt + space

@@ -1,6 +1,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+alias lg='lazygit'
 alias k='kubectl'
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
@@ -18,11 +19,15 @@ complete -cf man
 
 stty -ixon
 
-source /usr/bin/virtualenvwrapper.sh
+source /usr/bin/virtualenvwrapper_lazy.sh
 export WORKON_HOME=~/.venvs
 mkdir -p $WORKON_HOME
 
 export PYTHONDONTWRITEBYTECODE=1
+
+# FZF
+source /usr/share/fzf/key-bindings.bash
+source /usr/share/fzf/completion.bash
 
 # git
 source /usr/share/git/completion/git-completion.bash
@@ -68,6 +73,7 @@ alias gll="git log --stat --max-count=3"
 
 # Java
 export _JAVA_AWT_WM_NONREPARENTING=1
+export JAVA_HOME=/usr/lib/jvm/default
 
 PATH=$PATH:/opt/android-sdk/tools
 PATH=$PATH:/home/qlio/.composer/vendor/bin
@@ -123,3 +129,11 @@ export http_proxy=''
 export https_proxy=''
 export ftp_proxy=''
 export socks_proxy=''
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/opt/google-cloud-sdk/path.bash.inc' ]; then . '/opt/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/opt/google-cloud-sdk/completion.bash.inc' ]; then . '/opt/google-cloud-sdk/completion.bash.inc'; fi
+
+export PATH="$PATH:/opt/flutter/bin"

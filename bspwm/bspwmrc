@@ -17,9 +17,9 @@ bspc config remove_disabled_monitors true
 
 bspc config split_ratio 0.50
 
-bspc monitor eDP-1 -d $ws1 $ws2 $ws3 $ws4 $ws5
-bspc monitor HDMI-1 -d 6 7 8 9 0
-bspc wm eDP-1 HDMI-1
+bspc monitor eDP1 -d $ws1 $ws2 $ws3 $ws4 $ws5
+bspc monitor HDMI2 -d 6 7 8 9 0
+bspc wm eDP1 HDMI2
 
 # Startup
 $HOME/.config/bspwm/panel/panel &
