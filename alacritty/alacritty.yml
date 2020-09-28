@@ -1,5 +1,5 @@
 font:
-  size: 5.0
+  size: 8.0
   normal:
     family: Monaco
     style: Regular
@@ -50,7 +50,9 @@ colors:
 key_bindings:
   - { key: Return, mods: Alt, action: SpawnNewInstance }
   - { key: Up,     mods: Control|Shift, action: IncreaseFontSize }
-  - { key: Down,     mods: Control|Shift, action: DecreaseFontSize }
+  - { key: Down,   mods: Control|Shift, action: DecreaseFontSize }
+  - { key: T,      mods: Control|Shift, action: ScrollLineUp }
+  - { key: H,      mods: Control|Shift, action: ScrollLineDown }
 
   - { mode: Vi,    key: T,     action: Up }
   - { mode: Vi,    key: H,     action: Down }

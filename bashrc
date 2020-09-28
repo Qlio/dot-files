@@ -6,11 +6,13 @@ alias k='kubectl'
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
+export WINIT_X11_SCALE_FACTOR=1
 export XDG_CONFIG_HOME="$HOME/.config"
 export WALLPAPRES_DIR="$HOME/.wallpapers"
 export HISTCONTROL=ignoredups:erasedups
 export HISTFILESIZE=1000
 export HISTSIZE=1000
+export PYTHONDONTWRITEBYTECODE=1
 
 alias ll='ls -laF'
 
@@ -22,8 +24,6 @@ stty -ixon
 source /usr/bin/virtualenvwrapper_lazy.sh
 export WORKON_HOME=~/.venvs
 mkdir -p $WORKON_HOME
-
-export PYTHONDONTWRITEBYTECODE=1
 
 # FZF
 source /usr/share/fzf/key-bindings.bash
