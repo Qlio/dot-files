@@ -119,7 +119,7 @@ source $HOME/.config/utils/init
 # keyboard rate
 xset r rate 200 30
 
-source <(kubectl completion bash)
+# source <(kubectl completion bash)
 # xinput set-prop "Compx 2.4G Receiver Mouse" "libinput Accel Speed" -0.8
 # xrandr --auto --output eDP1 --right-of HDMI1
 # bspc wm -O eDP-1 HDMI-1

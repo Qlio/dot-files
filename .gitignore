@@ -5,7 +5,7 @@
 !bspwm/**
 !alacrity/
 !dunst/
-!polybar/
+!polybar/**
 !ranger/*
 !sxhkd/*
 !thefuck/*
@@ -20,3 +20,4 @@
 !bashrc
 !pacman-requirements.txt
 !xinitrc
+!picom.conf

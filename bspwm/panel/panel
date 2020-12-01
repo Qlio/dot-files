@@ -36,7 +36,7 @@ while true; do
 done &
 
 ./panel_bar < "$PANEL_FIFO" | lemonbar -a 13 \
-    -f "Monaco:size=10" \
+    -f "Monaco:size=11" \
     -f "Inconsolata Nerd Font Mono:size=15" \
      x"$PANEL_HEIGHT" \
     -F "$COLOUR_FOREGROUND" \

@@ -22,7 +22,8 @@ bspc monitor HDMI2 -d 6 7 8 9 0
 bspc wm eDP1 HDMI2
 
 # Startup
-$HOME/.config/bspwm/panel/panel &
+# $HOME/.config/bspwm/panel/panel &
+$HOME/.config/polybar/launch.sh
 
 # setting background image
 feh --randomize --bg-fill ~/.wallpapers

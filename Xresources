@@ -1,50 +1,16 @@
-URxvt*scrollTtyOutput: false
-URxvt*scrollWithBuffer: true
-URxvt*scrollTtyKeypress: true
-
-Xft*antialias: true
-
-URxvt*font: xft:Monaco:medium:size=8, xft:Inconsolata Nerd Font Mono:size=11, xft:Dejavu, xft:SourceHanSansJP
-URxvt*letterSpace: 0
-URxvt.background: #3f3f3f
-URxvt.foreground: #dcdccc
-
-URxvt.color0: #3f3f3f  # Black
-URxvt.color1: #fa8072  # Red
-URxvt.color2: #98fb98  # Green
-URxvt.color3: #dfaf8f  # Yelow
-URxvt.color4: #506070  # Blue
-URxvt.color5: #dc8cc3  # Magenta
-URxvt.color6: #8cd0d3  # Cyan
-URxvt.color7: #dcdccc  # White
-
-URxvt.color8: #709080  # DarkGray
-URxvt.color9: #de3333  # DarkRed
-! URxvt.color9: #dca3a3
-URxvt.color10: #c3bf9f # DarkGreen
-URxvt.color11: #f0dfaf # DarkYellow
-URxvt.color12: #94bff3 # DarkBlue
-URxvt.color13: #ec93d3 # DarkMagenta
-URxvt.color14: #93e0e3 # DarkCyan
-URxvt.color15: #ffffff # LightGrey
-
-URxvt.scrollBar: false
-URxvt.iso14755: false
-URxvt.iso14755_52: false
-URxvt.VT100.Translations: #override \
-URxvt.           Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
-URxvt.           Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
-
-URxvt.charClass: 33:48,36-38:48,43-47:48,58:48,61:48,63-64:48,126:48
-URxvt.metaSendsEscape: true
-URxvt.keysym.C-T: command:\033]720;3\007
-URxvt.keysym.C-H: command:\033]721;3\007
-URxvt.keysym.C-P: fc -s | yank -- xsel -b
-
-URxvt.perl-ext-common: font-size,keyboard-select
-URxvt.keysym.C-S-Up:   font-size:increase
-URxvt.keysym.C-S-Down: font-size:decrease
-
-URxvt.keysym.M-s: perl:keyboard-select:activate
-URxvt.keysym.M-slash: perl:keyboard-select:search
-URxvt.keyboard-select.clipboard: true
+color0: #3f3f3f
+color1: #fa8072
+color2: #98fb98
+color3: #dfaf8f
+color4: #506070
+color5: #dc8cc3
+color6: #8cd0d3
+color7: #dcdccc
+color8: #709080
+color9: #de3333
+color10: #c3bf9f
+color11: #f0dfaf
+color12: #94bff3
+color13: #ec93d3
+color14: #93e0e3
+color15: #ffffff
