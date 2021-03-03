@@ -31,6 +31,7 @@ autocmd FileType c setlocal foldmethod=marker foldmarker=\/\/\:,\/\/\ endfold
 
 ":1 CSS, SASS, SCSS
 autocmd FileType css,scss,sass setlocal foldmethod=marker foldmarker=\*\:,\*\ endfold
+autocmd FileType scss,sass setlocal foldmethod=marker foldmarker=\/\/:,\/\/\ endfold
 
 ":1 Less
 autocmd FileType less setlocal foldmethod=marker foldmarker=\/\/:,\"\ endfold
@@ -52,10 +53,9 @@ autocmd FileType java nmap <leader>s :call CocAction('runCommand', 'java.action.
 
 ":1 Tab configuration for filetypes
 " no tab use. tab = 4 space
-autocmd FileType python,sh,typescript,gdscript3
+autocmd FileType python,sh,typescript,gdscript3,javascript,javascript.jsx
   \ setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 " no tab use. tab = 2 space
-autocmd FileType css,vim,javascript,stylus,yaml,coffee,htmljinja
+autocmd FileType css,vim,stylus,yaml,coffee,htmljinja,sh
   \ setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-" endfold

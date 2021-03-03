@@ -10,7 +10,8 @@
 !sxhkd/*
 !thefuck/*
 !utils/*
-!vimconf/*
+!nvim/
+!nvim/**
 !vimwiki/*
 !00-keyboard.conf
 !01-touchpad.conf

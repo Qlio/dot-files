@@ -1,19 +1,85 @@
-":1 Vundle setup
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#rc()
+":1 ButtPlugs
+call plug#begin()
 
-Plugin 'VundleVim/Vundle.vim'
+" Plug 'junegunn/fzf'
+" Plug 'junegunn/fzf.vim'
 
-":1 Plugin - Ultisnips
-Plugin 'SirVer/ultisnips'
-let g:UltiSnipsEditSplit="horizontal"
-let g:UltiSnipsSnippetsDir="~/.config/vim/UltiSnips"
-let g:UltiSnipsSnippetDirectories=['/home/qlio/.config/vim/UltiSnips', 'UltiSnips']
-let g:UltiSnipsJumpForwardTrigger="<tab>"
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
-":1 Plugin - NERDTree
-Bundle 'scrooloose/nerdtree'
+Plug 'itchyny/lightline.vim'
+Plug 'godlygeek/tabular'
+Plug 'vimwiki/vimwiki'
+Plug 'scrooloose/nerdtree'
+Plug 'w0rp/ale'
 
+Plug 'posva/vim-vue'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'wavded/vim-stylus'
+Plug 'leafgarland/typescript-vim'
+Plug 'mattn/emmet-vim'
+Plug 'fisadev/vim-isort'
+
+call plug#end()
+
+":1 Keyboard mapping
+" Change the leader map
+let mapleader = ','
+let g:mapleader = ','
+let maplocalleader = ','
+let g:maplocalleader = ','
+
+" Shortcut to rapidly toggle 'set wrap'
+nmap <leader>r :set wrap!<CR>
+
+" Easy indent
+nmap > >>
+nmap < <<
+
+" Window move
+nmap <leader>d <C-w><LEFT>
+nmap <leader>n <C-w><RIGHT>
+nmap <leader>t <C-w><UP>
+nmap <leader>h <C-w><DOWN>
+
+" Window tab settings
+nnoremap gk gt
+nmap <C-t> :tabnew<CR>
+
+map <M-1> 1gk
+map <M-2> 2gk
+map <M-3> 3gk
+map <M-4> 4gk
+
+" Keymap switch
+let g:current_keymap = ''
+function! ToggleKeymap()
+  if g:current_keymap == ''
+    set keymap=mongolian-dvorak
+    let g:current_keymap = 'mongolian-dvorak'
+  else
+    set keymap=""
+    let g:current_keymap = ''
+  endif
+endfunction
+
+imap <C-l> <ESC>:call ToggleKeymap()<CR>a
+map <C-l> :call ToggleKeymap()<CR>
+
+" Save file
+" Need 'stty -ixon' command in shell (CLI).
+" more: http://superuser.com/questions/227588/vim-command-line-imap-problem
+autocmd BufEnter * nmap <C-s> :w! <bar> syntax sync fromstart<CR>
+autocmd BufEnter * imap <C-s> <ESC>:w! <bar> syntax sync fromstart<CR>
+
+" Close file
+nmap <C-b> :close<CR>
+imap <C-b> <ESC>:close<CR>
+
+":1 NERDTree
 map <silent><F2> :NERDTreeToggle<CR>
 
 let g:NERDTreeMapOpenVSplit='a'
@@ -22,7 +88,7 @@ let g:NERDTreeWinPos='right'
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeChDirMode=2
 
-let g:NERDTreeBookmarksFile = $HOME . '/.vim/.nerdtree-bookmarks'
+let g:NERDTreeBookmarksFile = $HOME . '/.config/nvim/.nerdtree-bookmarks'
 
 let NERDTreeIgnore=[
       \'\.jar$',
@@ -41,15 +107,13 @@ let NERDTreeIgnore=[
       \'Movies',
       \]
 
-":1 Plugin - ALE (Asynchronous Lint Engine)
-Plugin 'w0rp/ale'
-
+":1 ALE (Asynchronous Lint Engine)
 let g:ale_completion_enabled = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 let g:ale_typescript_tsc_fname = ''
-let g:ale_completion_tsserver_autoimport = 1
+let g:ale_completion_autoimport = 1
 let g:ale_python_flake8_change_directory = 0
 let g:ale_fix_on_save = 1
 
@@ -57,6 +121,7 @@ let g:ale_linters = {
       \ 'javascript': ['eslint'],
       \ 'python': ['flake8'],
       \ 'dart': ['language_server'],
+      \ 'terraform': ['terraform'],
       \ 'java': [],
       \ }
 let g:ale_fixers = {
@@ -64,49 +129,43 @@ let g:ale_fixers = {
       \}
 let g:ale_dart_dartanalyzer_executable = 'dartanalyzer'
 let g:ale_dart_dartfmt_options = '-l 120'
+nmap <silent> <C-t> <Plug>(ale_previous_wrap)
+nmap <silent> <C-h> <Plug>(ale_next_wrap)
 
-":1 Plugin - FZF
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+":1 FZF
+" let g:fzf_layout = { 'down': '~20%' }
+" let $FZF_DEFAULT_COMMAND = 'fd --type f'
+"
+" command! -bang -nargs=* Rg
+"   \ call fzf#vim#grep(
+"   \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+"   \   <bang>0 ? fzf#vim#with_preview('up:60%')
+"   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+"   \   <bang>0)
+"
+" command! -bang -nargs=? -complete=dir Files
+"   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+" FZF
+" nmap <Leader>. :Files<CR>
+" nmap <Leader>b :Buffers<CR>
+" nmap <Leader>g :Rg<CR>
 
-let g:fzf_layout = { 'down': '~20%' }
-let $FZF_DEFAULT_COMMAND = 'fd --type f'
-
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
-
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+":1 Telescope
+nnoremap <leader>. <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>g <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 ":1 Plugins
 " Features
-Bundle 'godlygeek/tabular'
-Plugin 'posva/vim-vue'
-Bundle 'hynek/vim-python-pep8-indent'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'wavded/vim-stylus'
-Plugin 'leafgarland/typescript-vim'
-Bundle 'christoomey/vim-sort-motion'
-Plugin 'dart-lang/dart-vim-plugin'
-Plugin 'calviken/vim-gdscript3'
-
-Plugin 'vimwiki/vimwiki'
 let g:vimwiki_list = [{'path': '~/.config/vimwiki', 'path_html': '~/.config/vimwiki'}]
 
-Plugin 'mattn/emmet-vim'
 let g:user_emmet_leader_key=','
 
-Plugin 'fisadev/vim-isort'
 let g:vim_isort_python_version = 'python3'
 let g:vim_isort_config_overrides = {'line_length': 120}
 let g:vue_disable_pre_processors = 0
 
-Plugin 'itchyny/lightline.vim'
 " Lightline
 set laststatus=2
 let g:lightline = {
@@ -168,6 +227,7 @@ filetype off                           " Disable file type detection
 filetype plugin on                     " Enable plugins
 filetype indent on                     " Enable indent
 
+set clipboard=unnamed                  " Clipboard
 set background=dark                    " Always use dark background
 set nocompatible                       " Enable VIM features
 set number                             " Enable line numbers
@@ -218,74 +278,6 @@ set fillchars=vert:\|,fold:\  " Make foldtext more clean
 " Recognize numbered list in text formatting
 set formatoptions+=n
 
-":1 Keyboard mapping
-" Change the leader map
-let mapleader = ','
-let g:mapleader = ','
-let maplocalleader = ','
-let g:maplocalleader = ','
-
-" Shortcut to rapidly toggle 'set wrap'
-nmap <leader>r :set wrap!<CR>
-
-" Easy indent
-nmap > >>
-nmap < <<
-
-" Window move
-nmap <leader>d <C-w><LEFT>
-nmap <leader>n <C-w><RIGHT>
-nmap <leader>t <C-w><UP>
-nmap <leader>h <C-w><DOWN>
-
-" Window tab settings
-nnoremap gk gt
-nmap <C-t> :tabnew<CR>
-
-" for xterm
-set <M-1>=1
-set <M-2>=2
-set <M-3>=3
-set <M-4>=4
-
-map <M-1> 1gk
-map <M-2> 2gk
-map <M-3> 3gk
-map <M-4> 4gk
-
-" UltiSnips
-nmap <Leader>z :UltiSnipsEdit<CR>
-
-" FZF
-nmap <Leader>. :Files<CR>
-nmap <Leader>b :Buffers<CR>
-nmap <Leader>g :Rg<CR>
-
-" Keymap switch
-let g:current_keymap = ''
-function! ToggleKeymap()
-  if g:current_keymap == ''
-    set keymap=mongolian-dvorak
-    let g:current_keymap = 'mongolian-dvorak'
-  else
-    set keymap=""
-    let g:current_keymap = ''
-  endif
-endfunction
-
-imap <C-l> <ESC>:call ToggleKeymap()<CR>a
-map <C-l> :call ToggleKeymap()<CR>
-
-" Save file
-" Need 'stty -ixon' command in shell (CLI).
-" more: http://superuser.com/questions/227588/vim-command-line-imap-problem
-autocmd BufEnter * nmap <C-s> :w! <bar> syntax sync fromstart<CR>
-autocmd BufEnter * imap <C-s> <ESC>:w! <bar> syntax sync fromstart<CR>
-
-" Close file
-nmap <C-b> :close<CR>
-imap <C-b> <ESC>:close<CR>
-
 ":1 Automatic commands
 " Remove trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
@@ -296,5 +288,5 @@ autocmd FileType python setlocal foldmethod=syntax foldtext=PythonFoldText()
 " Tab
 autocmd TabEnter * silent! :execute 'cd' g:NERDTree.ForCurrentTab().getRoot().path.str()
 
-so $HOME/.vim/dvorak.vimrc
-so $HOME/.vim/filetype.vimrc
+so $HOME/.config/nvim/dvorak.vimrc
+so $HOME/.config/nvim/filetype.vimrc
