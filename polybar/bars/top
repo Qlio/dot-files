@@ -1,0 +1,42 @@
+[bar/top]
+width = 100%
+height = 22
+offset-x = 0
+offset-y = 0
+radius = 0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border = 0
+border-size = 0
+border-color = #fff
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 2
+module-margin-right = 2
+
+font-0 = fixed:pixelsize=11;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = Font Awesome 5 Free Solid:pixelsize=11;1
+font-3 = FontAwesome:pixelsize=11;1
+font-4 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;
+
+modules-left = bspwm
+modules-center = date
+modules-right = pacman-packages xbacklight pulseaudio xkeyboard wlan eth battery-1 battery-2 temperature menu powermenu
+
+tray-position = right
+tray-padding = 2
+enable-ipc = true
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+; vim:ft=dosini

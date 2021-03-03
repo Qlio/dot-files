@@ -1,0 +1,341 @@
+[globals]
+menu-script-path = ~/.config/polybar/scripts/menu.sh
+
+[module/pacman-packages]
+type = custom/ipc
+hook-0 = pacman -Qu | wc -l
+format-prefix = "📦 "
+click-left = updatepackages
+initial = 1
+
+[module/xkeyboard]
+type = internal/xkeyboard
+
+bufferlist-0 = num lock
+bufferlist-1 = scroll lock
+
+format = <label-layout>
+format-prefix = 
+
+label-layout-padding = 2
+
+label-indicator-on-capslock =  CL
+label-indicator-on-capslock-foreground = #D08770
+label-indicator-on-capslock-underline = #D08770
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = 
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.light-blue}
+label-focused-padding = 2
+
+label-occupied = 
+label-occupied-padding = 2
+
+label-urgent = 
+label-urgent-foreground = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = 
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
+
+[module/xbacklight]
+type = internal/xbacklight
+
+enable-scroll = true
+
+format = <ramp> <label>
+format-underline = #81A1C1
+
+ramp-0 = 
+
+label = %percentage%%
+ramp-foreground = #81A1C1
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+
+format = <ramp-load> <label>
+
+ramp-load-0 = 
+ramp-load-0-foreground = ${colors.green}
+
+ramp-load-1 = 
+ramp-load-1-foreground = ${colors.yellow}
+
+ramp-load-2 = 
+ramp-load-2-foreground = ${colors.red}
+
+[module/memory]
+type = internal/memory
+interval = 3
+
+format = <ramp-used> <label>
+
+label = %gb_used%/%gb_total%
+
+ramp-used-0 = 
+ramp-used-0-foreground = ${colors.green}
+
+ramp-used-1 = 
+ramp-used-1-foreground = ${colors.yellow}
+
+ramp-used-2 = 
+ramp-used-2-foreground = ${colors.red}
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 5.0
+
+format-connected = %{A1:networkmanager_dmenu:}<ramp-signal>%{A}
+format-disconnected = %{A1:networkmanager_dmenu:}<label-disconnected>%{A}
+
+label-disconnected = 
+label-disconnected-foreground = ${colors.red}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+
+ramp-signal-0-foreground = ${colors.red}
+ramp-signal-0-underline = ${colors.red}
+
+ramp-signal-1-foreground = ${colors.yellow}
+ramp-signal-1-underline = ${colors.yellow}
+
+ramp-signal-2-foreground = ${colors.light-blue}
+ramp-signal-2-underline = ${colors.light-blue}
+
+ramp-signal-3-foreground = ${colors.green}
+ramp-signal-3-underline = ${colors.green}
+
+[module/eth]
+type = internal/network
+interface = enp0s31f6
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected =
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = 
+format-foreground = ${colors.white}
+format-underline = ${colors.light-blue}
+
+label = %date% %time%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_00_1f.3.analog-stereo
+use-ui-max = true
+interval = 5
+
+format-volume = <ramp-volume> <label-volume>
+format-volume-underline = #B48EAD
+
+label-muted =  muted
+label-muted-foreground = ${colors.red}
+label-muted-underline = ${colors.red}
+
+ramp-volume-0 =""
+ramp-volume-1 =""
+ramp-volume-2 =""
+ramp-volume-3 =""
+ramp-volume-4 =""
+ramp-volume-0-foreground = ${colors.green}
+ramp-volume-1-foreground = ${colors.green}
+ramp-volume-2-foreground = ${colors.yellow}
+ramp-volume-3-foreground = ${colors.yellow}
+ramp-volume-4-foreground = ${colors.red}
+
+ramp-headphones-0 = 
+ramp-volume-foreground = ${colors.light-blue}
+
+[module/battery-1]
+type = internal/battery
+
+full-at = 95
+
+battery = BAT1
+adapter = AC
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = ${colors.light-blue}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${colors.yellow}
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.yellow}
+
+label-full = 
+label-full-foreground = ${colors.green}
+label-full-underline = ${colors.green}
+label-discharging-foreground = ${colors.yellow}
+
+[module/battery-2]
+type = internal/battery
+
+full-at = 95
+
+battery = BAT0
+adapter = AC
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = ${colors.light-blue}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${colors.yellow}
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.yellow}
+
+label-full = 
+label-full-foreground = ${colors.green}
+label-full-underline = ${colors.green}
+label-discharging-foreground = ${colors.yellow}
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 3
+base-temperature = 20
+warn-temperature = 70
+
+; Format
+format = <ramp> <label>
+format-warn = <label-warn>
+format-warn-background = ${colors.light-blue}
+
+label-warn =  %temperature-c%
+label-warn-padding = 1
+label-warn-foreground = ${colors.red}
+label-warn-background = ${colors.light-blue}
+
+ramp-0 = 
+ramp-0-foreground = ${colors.light-blue}
+ramp-1 = 
+ramp-1-foreground = ${colors.light-blue}
+ramp-2 = 
+ramp-2-foreground = ${colors.green}
+ramp-3 = 
+ramp-3-foreground = ${colors.green}
+ramp-4 = 
+ramp-4-foreground = ${colors.yellow}
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close = 
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[module/volume-bar]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_00_1f.3.analog-stereo
+
+format-volume = <label-volume><bar-volume>
+format-muted = <label-muted>
+
+label-volume = " "
+label-volume-foreground = ${colors.red}
+
+format-volume-background =${colors.background}
+format-volume-foreground = ${colors.foreground}
+format-muted-prefix =
+
+label-muted = ""
+label-muted-foreground = ${colors.foreground}
+
+ramp-volume-0 =""
+ramp-volume-1 =""
+ramp-volume-2 =""
+ramp-volume-3 =""
+ramp-volume-4 =""
+ramp-volume-foreground = ${colors.secondary}
+ramp-volume-background = ${colors.foreground}
+ramp-volume-overline = ${colors.background}
+ramp-volume-underline = ${colors.background}
+ramp-headphones-0 ="  "
+ramp-headphones-1 ="  "
+
+bar-volume-width = 21
+bar-volume-gradient = true
+bar-volume-indicator = "%{T3}█%{T-}"
+bar-volume-indicator-foreground = ${colors.foreground}
+bar-volume-indicator-font = 2
+bar-volume-fill ="%{T3}█%{T-}"
+bar-volume-foreground-0 = ${colors.foreground}
+bar-volume-foreground-1 = ${colors.foreground}
+bar-volume-foreground-2 = ${colors.foreground}
+bar-volume-foreground-3 = ${colors.foreground}
+bar-volume-fill-font = 2
+bar-volume-empty ="%{T3}█%{T-}"
+bar-volume-empty-foreground = ${colors.foreground-alt}
+bar-volume-empty-font = 2
+
+[module/menu]
+type = custom/ipc
+hook-0 = ~/.config/polybar/scripts/menu.sh icon
+initial = 1
+click-left = ~/.config/polybar/scripts/menu.sh toggle
+
+; vim:ft=dosini
