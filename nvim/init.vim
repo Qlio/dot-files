@@ -1,9 +1,6 @@
 ":1 ButtPlugs
 call plug#begin()
 
-" Plug 'junegunn/fzf'
-" Plug 'junegunn/fzf.vim'
-
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -131,30 +128,6 @@ let g:ale_dart_dartanalyzer_executable = 'dartanalyzer'
 let g:ale_dart_dartfmt_options = '-l 120'
 nmap <silent> <C-t> <Plug>(ale_previous_wrap)
 nmap <silent> <C-h> <Plug>(ale_next_wrap)
-
-":1 FZF
-" let g:fzf_layout = { 'down': '~20%' }
-" let $FZF_DEFAULT_COMMAND = 'fd --type f'
-"
-" command! -bang -nargs=* Rg
-"   \ call fzf#vim#grep(
-"   \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-"   \   <bang>0 ? fzf#vim#with_preview('up:60%')
-"   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-"   \   <bang>0)
-"
-" command! -bang -nargs=? -complete=dir Files
-"   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-" FZF
-" nmap <Leader>. :Files<CR>
-" nmap <Leader>b :Buffers<CR>
-" nmap <Leader>g :Rg<CR>
-
-":1 Telescope
-nnoremap <leader>. <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>g <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 ":1 Plugins
 " Features

@@ -7,7 +7,15 @@ require('telescope').setup {
 
         file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
         grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
-        qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+        vimgrep_arguments = {
+          'rg',
+          '--color=never',
+          '--no-heading',
+          '--with-filename',
+          '--line-number',
+          '--column',
+          '--smart-case'
+        },
 
         mappings = {
             i = {
@@ -15,12 +23,6 @@ require('telescope').setup {
             },
         }
     },
-    extensions = {
-        fzy_native = {
-            override_generic_sorter = false,
-            override_file_sorter = true,
-        }
-    }
 }
 
 local M = {}
@@ -32,7 +34,7 @@ M.search_dotfiles = function()
 end
 
 M.git_branches = function()
-    require("telescope.builtin").git_branches({
+    require('telescope.builtin').git_branches({
         attach_mappings = function(prompt_bufnr, map)
             map('i', '<c-d>', actions.git_delete_branch)
             map('n', '<c-d>', actions.git_delete_branch)
