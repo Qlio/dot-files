@@ -9,7 +9,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'godlygeek/tabular'
 Plug 'vimwiki/vimwiki'
 Plug 'scrooloose/nerdtree'
-Plug 'w0rp/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'posva/vim-vue'
 Plug 'hynek/vim-python-pep8-indent'
@@ -43,9 +43,7 @@ nmap <leader>t <C-w><UP>
 nmap <leader>h <C-w><DOWN>
 
 " Window tab settings
-nnoremap gk gt
 nmap <C-t> :tabnew<CR>
-
 map <M-1> 1gk
 map <M-2> 2gk
 map <M-3> 3gk
@@ -104,30 +102,92 @@ let NERDTreeIgnore=[
       \'Movies',
       \]
 
-":1 ALE (Asynchronous Lint Engine)
-let g:ale_completion_enabled = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '⚠'
-let g:ale_typescript_tsc_fname = ''
-let g:ale_completion_autoimport = 1
-let g:ale_python_flake8_change_directory = 0
-let g:ale_fix_on_save = 1
+":1 CoC
+set cmdheight=2
+set updatetime=300
+set shortmess+=c  " Don't pass messages to |ins-completion-menu.
 
-let g:ale_linters = {
-      \ 'javascript': ['eslint'],
-      \ 'python': ['flake8'],
-      \ 'dart': ['language_server'],
-      \ 'terraform': ['terraform'],
-      \ 'java': [],
-      \ }
-let g:ale_fixers = {
-      \   'dart': ['dartfmt'],
-      \}
-let g:ale_dart_dartanalyzer_executable = 'dartanalyzer'
-let g:ale_dart_dartfmt_options = '-l 120'
-nmap <silent> <C-t> <Plug>(ale_previous_wrap)
-nmap <silent> <C-h> <Plug>(ale_next_wrap)
+" Use tab for trigger completion with characters ahead and navigate.
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <c-space> coc#refresh()  " Use <c-space> to trigger completion.
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 ":1 Plugins
 " Features
@@ -142,23 +202,26 @@ let g:vue_disable_pre_processors = 0
 " Lightline
 set laststatus=2
 let g:lightline = {
-\ 'colorscheme': 'wombat',
-\ 'active': {
-\   'left': [['mode', 'paste'], ['filename', 'modified']],
-\   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
-\ },
-\ 'component_expand': {
-\   'filename': 'LightlineFileName',
-\   'linter_warnings': 'LightlineLinterWarnings',
-\   'linter_errors': 'LightlineLinterErrors',
-\   'linter_ok': 'LightlineLinterOK'
-\ },
-\ 'component_type': {
-\   'readonly': 'error',
-\   'linter_warnings': 'warning',
-\   'linter_errors': 'error'
-\ },
-\ }
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [['mode', 'paste'], ['cocstatus', 'filename', 'modified']],
+      \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
+      \ },
+      \ 'component_expand': {
+      \   'filename': 'LightlineFileName',
+      \   'linter_warnings': 'LightlineLinterWarnings',
+      \   'linter_errors': 'LightlineLinterErrors',
+      \   'linter_ok': 'LightlineLinterOK'
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status'
+      \ },
+      \ 'component_type': {
+      \   'readonly': 'error',
+      \   'linter_warnings': 'warning',
+      \   'linter_errors': 'error'
+      \ },
+      \ }
 
 function! LightlineFileName() abort
   return expand('%')
