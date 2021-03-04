@@ -1,4 +1,3 @@
-background_opacity: 0.8
 font:
   size: 8.0
   normal:
@@ -6,47 +5,33 @@ font:
     style: Regular
 
 colors:
-  cursor:
-    text: '#fefff2'
-    cursor: '#ffffff'
-
   selection:
-    text: '#000000'
-    background: '#ffffff'
+    text:       '#FAFAFA'
+    background: '#252834'
 
   primary:
-    background: '#3f3f3f'
-    foreground: '#dcdcdc'
+    background: '#313440'
+    foreground: '#FAFAFA'
 
   normal:
-    black:   '#3f3f3f'
-    red:     '#fa8072'
-    green:   '#98fb98'
-    yellow:  '#dfaf8f'
-    blue:    '#94bff3'
-    magenta: '#dc8cc3'
-    cyan:    '#93e0e3'
-    white:   '#dcdccc'
+    black:   '#282C34'
+    red:     '#FF6059'
+    green:   '#5FFF87'
+    yellow:  '#FFFF87'
+    blue:    '#5FAFFF'
+    magenta: '#AF87FF'
+    cyan:    '#5FAFFF'
+    white:   '#FAFAFA'
 
   bright:
-    black:   '#dcdccc'
-    red:     '#de3333'
-    green:   '#c3bf9f'
-    yellow:  '#f0dfaf'
-    blue:    '#94bff3'
-    magenta: '#ec93d3'
-    cyan:    '#93e0e3'
-    white:   '#ffffff'
-
-  dim:
-    black:   '#dcdccc'
-    red:     '#de3333'
-    green:   '#c3bf9f'
-    yellow:  '#f0dfaf'
-    blue:    '#94bff3'
-    magenta: '#ec93d3'
-    cyan:    '#93e0e3'
-    white:   '#ffffff'
+    black:   '#282C34'
+    red:     '#FF6059'
+    green:   '#5FFF87'
+    yellow:  '#FFFF87'
+    blue:    '#5FAFFF'
+    magenta: '#AF87FF'
+    cyan:    '#5FAFFF'
+    white:   '#FAFAFA'
 
 key_bindings:
   - { key: Return, mods: Alt, action: SpawnNewInstance }
