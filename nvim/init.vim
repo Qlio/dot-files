@@ -107,18 +107,13 @@ set cmdheight=2
 set updatetime=300
 set shortmess+=c  " Don't pass messages to |ins-completion-menu.
 
-" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-inoremap <silent><expr> <c-space> coc#refresh()  " Use <c-space> to trigger completion.
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -186,9 +181,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add (Neo)Vim's native statusline support.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 ":1 Plugins
 " Features
 let g:vimwiki_list = [{'path': '~/.config/vimwiki', 'path_html': '~/.config/vimwiki'}]
@@ -199,7 +191,7 @@ let g:vim_isort_python_version = 'python3'
 let g:vim_isort_config_overrides = {'line_length': 120}
 let g:vue_disable_pre_processors = 0
 
-" Lightline
+":1 Lightline
 set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -211,15 +203,15 @@ let g:lightline = {
       \   'filename': 'LightlineFileName',
       \   'linter_warnings': 'LightlineLinterWarnings',
       \   'linter_errors': 'LightlineLinterErrors',
-      \   'linter_ok': 'LightlineLinterOK'
+      \   'linter_ok': 'LightlineLinterOK',
       \ },
       \ 'component_function': {
-      \   'cocstatus': 'coc#status'
+      \   'cocstatus': 'coc#status',
       \ },
       \ 'component_type': {
       \   'readonly': 'error',
       \   'linter_warnings': 'warning',
-      \   'linter_errors': 'error'
+      \   'linter_errors': 'error',
       \ },
       \ }
 
@@ -248,7 +240,7 @@ function! LightlineLinterOK() abort
   return l:counts.total == 0 ? '✓ ' : ''
 endfunction
 
-autocmd User ALELint call s:MaybeUpdateLightline()
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " Update and show lightline but only if it's visible (e.g., not in Goyo)
 function! s:MaybeUpdateLightline()

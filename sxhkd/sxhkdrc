@@ -79,7 +79,7 @@ super + {h,j,k,l}
   bspc node -p {west,south,north,east}
 
 # cancel the preselection for the focused desktop
-ctrl + space
+super + space
   bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 #
