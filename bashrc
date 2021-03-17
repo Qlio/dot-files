@@ -10,8 +10,8 @@ export HISTSIZE=3000
 export PYTHONDONTWRITEBYTECODE=1
 export LANG=en_US.UTF-8
 export PANEL_FIFO="/tmp/panel-fifo"
-export VISUAL=vim                     # setting vim as default editor
-export EDITOR="${VISUAL}"             # setting vim as default editor
+export VISUAL=nvim                    # setting nvim as default editor
+export EDITOR="${VISUAL}"             # setting nvim as default editor
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 export JAVA_HOME=/usr/lib/jvm/default

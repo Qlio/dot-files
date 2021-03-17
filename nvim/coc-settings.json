@@ -1,8 +1,0 @@
-{
-  "suggest.autoTrigger": "none",
-  "python.jediEnabled": false,
-  "java.jdt.ls.vmargs": "-javaagent:/home/qlio/.m2/repository/org/projectlombok/lombok/1.18.10/lombok-1.18.10.jar -Xbootclasspath/a:/home/qlio/.m2/repository/org/projectlombok/lombok/1.18.10/lombok-1.18.10.jar",
-  "java.completion.enabled": true,
-  "java.completion.overwrite": false,
-  "java.completion.importOrder": true
-}

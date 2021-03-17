@@ -48,9 +48,6 @@ autocmd FileType dart nnoremap <leader>f :DartFmt<cr>
 ":1 Python
 autocmd FileType python nmap <leader>s :Isort<CR>
 
-":1 Java
-autocmd FileType java nmap <leader>s :call CocAction('runCommand', 'java.action.organizeImports')<CR>
-
 ":1 Tab configuration for filetypes
 " no tab use. tab = 4 space
 autocmd FileType python,sh,typescript,gdscript3,javascript,javascript.jsx
