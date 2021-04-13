@@ -1,4 +1,4 @@
-":1 ButtPlugs
+":1 Plugs
 call plug#begin()
 
 Plug 'nvim-lua/popup.nvim'
@@ -14,6 +14,7 @@ Plug 'mattn/emmet-vim'
 Plug 'fisadev/vim-isort'
 
 Plug 'neovim/nvim-lspconfig'
+Plug 'glepnir/lspsaga.nvim'
 Plug 'hrsh7th/nvim-compe'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -114,23 +115,21 @@ let g:vim_isort_config_overrides = {'line_length': 120}
 let g:vue_disable_pre_processors = 0
 
 ":1 Lightline
-set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [['mode', 'paste'], ['filename', 'modified']],
-      \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
+      \   'right': [['lineinfo', 'percent'], ['percent'], ['readonly'], ['lsp_diagnostics_errors'], ['lsp_diagnostics_warnings'], ['lsp_diagnostics_hints']]
       \ },
       \ 'component_expand': {
       \   'filename': 'LightlineFileName',
-      \   'linter_warnings': 'LightlineLinterWarnings',
-      \   'linter_errors': 'LightlineLinterErrors',
-      \   'linter_ok': 'LightlineLinterOK',
       \ },
       \ 'component_type': {
       \   'readonly': 'error',
-      \   'linter_warnings': 'warning',
-      \   'linter_errors': 'error',
+      \ },
+      \ 'component_function': {
+      \   'lsp_diagnostics_hints': 'LightlineLspHints',
+      \   'lsp_diagnostics_warnings': 'LightlineLspWarnings',
+      \   'lsp_diagnostics_errors': 'LightlineLspErrors',
       \ },
       \ }
 
@@ -138,32 +137,31 @@ function! LightlineFileName() abort
   return expand('%')
 endfunction
 
-function! LightlineLinterWarnings() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '' : printf('%d ◆', all_non_errors)
+function! LightlineLspHints() abort
+  let sl = ''
+  if luaeval('not vim.tbl_isempty(vim.lsp.buf_get_clients(0))')
+    let sl.='💡:'
+    let sl.=luaeval("vim.lsp.diagnostic.get_count(0, [[Hint]])")
+  endif
+  return sl
 endfunction
 
-function! LightlineLinterErrors() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '' : printf('%d ✗', all_errors)
+function! LightlineLspWarnings() abort
+  let sl = ''
+  if luaeval('not vim.tbl_isempty(vim.lsp.buf_get_clients(0))')
+    let sl.=' :'
+    let sl.=luaeval("vim.lsp.diagnostic.get_count(0, [[Warning]])")
+  endif
+  return sl
 endfunction
 
-function! LightlineLinterOK() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '✓ ' : ''
-endfunction
-
-" Update and show lightline but only if it's visible (e.g., not in Goyo)
-function! s:MaybeUpdateLightline()
-  if exists('#lightline')
-    call lightline#update()
-  end
+function! LightlineLspErrors() abort
+  let sl = ''
+  if luaeval('not vim.tbl_isempty(vim.lsp.buf_get_clients(0))')
+    let sl.=':'
+    let sl.=luaeval("vim.lsp.diagnostic.get_count(0, [[Error]])")
+  endif
+  return sl
 endfunction
 
 ":1 Standard (frozen) configurations
@@ -173,6 +171,7 @@ filetype plugin on                     " Enable plugins
 filetype indent on                     " Enable indent
 
 " set completeopt=menuone,noselect       " Auto complete popup
+set laststatus=2                       " Always have status line
 set clipboard=unnamed                  " Clipboard
 set background=dark                    " Always use dark background
 set nocompatible                       " Enable VIM features
