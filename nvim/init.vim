@@ -17,6 +17,8 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'hrsh7th/nvim-compe'
 
+Plug 'SirVer/ultisnips'
+
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()
@@ -163,6 +165,10 @@ function! LightlineLspErrors() abort
   endif
   return sl
 endfunction
+
+":1 UltiSnips
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsSnippetDirectories=['snips']
 
 ":1 Standard (frozen) configurations
 syntax on                              " Enable syntax hightlight
