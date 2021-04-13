@@ -16,9 +16,11 @@ Plug 'fisadev/vim-isort'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 call plug#end()
 
-" lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
+lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
 ":1 Keyboard mapping
 " Change the leader map
