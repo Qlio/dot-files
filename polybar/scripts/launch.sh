@@ -5,6 +5,5 @@ killall -q polybar
 # polybar-msg cmd quit
 
 # Launch top bar
-echo "---" | tee -a /tmp/polybar-top.log
-polybar top >>/tmp/polybar-top.log 2>&1 & disown
-echo $! >> /tmp/polybar-top-pid
+echo "---" | tee -a /tmp/polybar-main.log
+polybar main >>/tmp/polybar-main.log 2>&1 & disown

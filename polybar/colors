@@ -1,16 +1,15 @@
 [colors]
-red = #BF616A
-green = #A3BE8C
-yellow = #EBCB8B
-light-blue = #8FBCBB
+red = #e06c75
+green = #a0e8a2
+green-1 = #4bb1a7
+light-blue = #61afef
+yellow = #d4b261
 white = #fff
+pink = #989cff
 
-background = #aa2e3440
-background-alt = #3f3f3f
-foreground = ${colors.light-blue}
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = ${colors.red}
+background = #1e222a
+background-1 = #2b2f37
+foreground = #fafafa
+foreground-alt = #fafafa
 
 ; vim:ft=dosini
