@@ -26,6 +26,7 @@ label-focused-padding = 1
 
 label-occupied = 
 label-occupied-background = ${colors.background-1}
+label-occupied-foreground = ${colors.white}
 label-occupied-padding = 1
 
 label-urgent = 
@@ -35,7 +36,7 @@ label-urgent-padding = 1
 
 label-empty = 
 label-empty-background = ${colors.background-1}
-label-empty-foreground = ${colors.white}
+label-empty-foreground = ${colors.gray}
 label-empty-padding = 1
 
 [module/eth]
@@ -221,7 +222,7 @@ format-padding = 1
 type = internal/cpu
 interval = 2.5
 format = <label>
-format-prefix = " CPU"
+format-prefix = " CPU "
 label = "%percentage:2%%"
 format-prefix-foreground = ${colors.pink}
 format-padding = 1

@@ -24,6 +24,7 @@ bspc wm eDP1 HDMI2
 # Startup
 # $HOME/.config/bspwm/panel/panel &
 $HOME/.config/polybar/scripts/launch.sh
+picom -b
 
 # setting background image
 feh --randomize --bg-fill ~/.wallpapers
