@@ -28,6 +28,3 @@ picom -b
 
 # setting background image
 feh --randomize --bg-fill ~/.wallpapers
-
-bspc rule -a BomberMan state=floting
-bspc rule -a calendar state=floting
