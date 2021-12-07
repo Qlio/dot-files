@@ -1,0 +1,1 @@
+SUBSYSTEM=="drm", ACTION=="change", RUN+="/home/qlio/.config/udev-rules/99-new-display.sh"
