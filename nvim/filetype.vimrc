@@ -46,11 +46,11 @@ autocmd FileType dart nnoremap <leader>f :DartFmt<cr>
 autocmd FileType dart nnoremap <leader>f :DartFmt<cr>
 
 ":1 Python
-autocmd FileType python nmap <leader>s :Isort<CR>
+autocmd FileType python nmap <leader>s :PyrightOrganizeImports<CR>
 
 ":1 Tab configuration for filetypes
 " no tab use. tab = 4 space
-autocmd FileType python,sh,typescript,gdscript3,javascript,javascript.jsx
+autocmd FileType python,sh,typescript,gdscript3,javascript,javascriptreact,lua
   \ setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 " no tab use. tab = 2 space

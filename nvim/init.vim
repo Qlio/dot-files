@@ -4,22 +4,22 @@ call plug#begin()
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-
-Plug 'itchyny/lightline.vim'
 Plug 'godlygeek/tabular'
 Plug 'vimwiki/vimwiki'
 Plug 'scrooloose/nerdtree'
-
 Plug 'mattn/emmet-vim'
 Plug 'fisadev/vim-isort'
-
 Plug 'neovim/nvim-lspconfig'
-Plug 'glepnir/lspsaga.nvim'
+Plug 'tami5/lspsaga.nvim'
 Plug 'hrsh7th/nvim-compe'
-
 Plug 'SirVer/ultisnips'
-
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'hoob3rt/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'tomlion/vim-solidity'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+
+Plug 'bluz71/vim-nightfly-guicolors'
 
 call plug#end()
 
@@ -116,56 +116,6 @@ let g:vim_isort_python_version = 'python3'
 let g:vim_isort_config_overrides = {'line_length': 120}
 let g:vue_disable_pre_processors = 0
 
-":1 Lightline
-let g:lightline = {
-      \ 'active': {
-      \   'left': [['mode', 'paste'], ['filename', 'modified']],
-      \   'right': [['lineinfo', 'percent'], ['percent'], ['readonly'], ['lsp_diagnostics_errors'], ['lsp_diagnostics_warnings'], ['lsp_diagnostics_hints']]
-      \ },
-      \ 'component_expand': {
-      \   'filename': 'LightlineFileName',
-      \ },
-      \ 'component_type': {
-      \   'readonly': 'error',
-      \ },
-      \ 'component_function': {
-      \   'lsp_diagnostics_hints': 'LightlineLspHints',
-      \   'lsp_diagnostics_warnings': 'LightlineLspWarnings',
-      \   'lsp_diagnostics_errors': 'LightlineLspErrors',
-      \ },
-      \ }
-
-function! LightlineFileName() abort
-  return expand('%')
-endfunction
-
-function! LightlineLspHints() abort
-  let sl = ''
-  if luaeval('not vim.tbl_isempty(vim.lsp.buf_get_clients(0))')
-    let sl.='💡:'
-    let sl.=luaeval("vim.lsp.diagnostic.get_count(0, [[Hint]])")
-  endif
-  return sl
-endfunction
-
-function! LightlineLspWarnings() abort
-  let sl = ''
-  if luaeval('not vim.tbl_isempty(vim.lsp.buf_get_clients(0))')
-    let sl.=' :'
-    let sl.=luaeval("vim.lsp.diagnostic.get_count(0, [[Warning]])")
-  endif
-  return sl
-endfunction
-
-function! LightlineLspErrors() abort
-  let sl = ''
-  if luaeval('not vim.tbl_isempty(vim.lsp.buf_get_clients(0))')
-    let sl.=':'
-    let sl.=luaeval("vim.lsp.diagnostic.get_count(0, [[Error]])")
-  endif
-  return sl
-endfunction
-
 ":1 UltiSnips
 let g:UltiSnipsExpandTrigger='<tab>'
 let g:UltiSnipsSnippetDirectories=['snips']
@@ -203,8 +153,10 @@ set undofile                           " Persistent undo
 set numberwidth=4                      " Line number width
 set shellslash                         " Always use unix style slash /
 set nojoinspaces                       " no insert two spaces in line join
-set t_Co=256                           " (CLI only) Number of colors
+set termguicolors                      " (CLI only) Number of colors
 set gdefault                           " Add the g flag to search/replace by default
+
+colorscheme nightfly
 
 " Easy fold toggle
 nmap <Space> za
