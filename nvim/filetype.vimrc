@@ -1,14 +1,3 @@
-":1 Coffeescript
-autocmd FileType coffee setlocal foldmethod=marker foldmarker=#\:,endfold
-
-autocmd BufEnter * if &filetype == 'coffee' |nmap <F9>       :w<CR>:       !coffee "%" --nodejs               <CR>| endif
-autocmd BufEnter * if &filetype == 'coffee' |nmap <F5>       :w<CR>:       !coffee -c -b -p "%" > "%:r.min.js"<CR>| endif
-autocmd BufEnter * if &filetype == 'coffee' |nmap <C-s>      :w<CR>:silent !coffee -c -b -p "%" > "%:r.min.js"<CR>| endif
-autocmd BufEnter * if &filetype == 'coffee' |imap <C-s> <ESC>:w<CR>:silent !coffee -c -b -p "%" > "%:r.min.js"<CR>| endif
-
-" Show line in 80th column
-autocmd BufEnter * if &filetype == 'coffee' |let &colorcolumn=join(range(81,81),",") | endif
-
 ":1 Javascript
 autocmd FileType javascript setlocal foldmethod=marker foldmarker=\/\/\:,\/\/\ endfold autoindent
 
@@ -24,7 +13,17 @@ autocmd FileType java setlocal tabstop=4
 autocmd FileType vim setlocal foldmethod=marker foldmarker=\"\:,\"\ endfold
 
 ":1 Typescript
-autocmd FileType typescript nmap <leader>s :ALEOrganizeImports<CR>
+autocmd FileType typescript setlocal foldmethod=syntax
+
+":1 Terraform
+function! TerraformFoldText()
+  const splittedLineList = split(getline(v:foldstart), ' ')[:-2]
+  let type = splittedLineList[0]
+  let lineList = splittedLineList[1:]
+  let txt = type . " " . join(lineList, ' ')
+  return txt
+endfunction
+autocmd FileType terraform setlocal foldmethod=expr foldexpr=(getline(v:lnum+1)=~'^\\l'?'<1':1) foldtext=TerraformFoldText()
 
 ":1 C
 autocmd FileType c setlocal foldmethod=marker foldmarker=\/\/\:,\/\/\ endfold
@@ -38,12 +37,6 @@ autocmd FileType less setlocal foldmethod=marker foldmarker=\/\/:,\"\ endfold
 
 ":1 Vue, HTML
 autocmd FileType vue,html setlocal foldmethod=marker foldmarker=\<\!\-\-\ \:,\<\!\-\-\ \endfold
-
-":1 Dart
-autocmd FileType dart nnoremap <leader>f :DartFmt<cr>
-
-":1 Dart
-autocmd FileType dart nnoremap <leader>f :DartFmt<cr>
 
 ":1 Python
 autocmd FileType python nmap <leader>s :PyrightOrganizeImports<CR>
