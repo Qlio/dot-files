@@ -5,7 +5,7 @@ window:
     general: Alacritty
 
 font:
-  size: 8.0
+  size: 10.0
   normal:
     family: Monaco
     style: Regular
@@ -44,14 +44,49 @@ colors:
     cyan:    '#5FAFFF'
     white:   '#FAFAFA'
 
-background_opacity: 0.96
+window:
+  opacity: 0.9
+
+alt_send_esc: false
 
 key_bindings:
   - { key: Return, mods: Alt,           action: SpawnNewInstance }
-  - { key: Up,     mods: Control|Shift, action: IncreaseFontSize }
-  - { key: Down,   mods: Control|Shift, action: DecreaseFontSize }
   - { key: T,      mods: Control|Shift, action: ScrollLineUp }
   - { key: H,      mods: Control|Shift, action: ScrollLineDown }
+
+  - { key: F2,     mods: Command,       chars: "\x02\x2c" }
+  - { key: M,      mods: Alt,           chars: "\x02\x6d" }
+  - { key: B,      mods: Command,       chars: "\x1bb" }
+  - { key: P,      mods: Command,       chars: "\x1bp" }
+  - { key: G,      mods: Command,       chars: "\x1bg" }
+  - { key: S,      mods: Command,       chars: "\x1b\x3a\x77\x0a" }
+
+  - { key: T, mods: Alt, chars: "\x02\x63" }
+  - { key: N, mods: Alt, chars: "\x02\x25" }
+  - { key: H, mods: Alt, chars: "\x02\x22" }
+
+  - { key: D, mods: Command|Alt, chars: "\x02\x1b\x5b\x44" }
+  - { key: N, mods: Command|Alt, chars: "\x02\x1b\x5b\x43" }
+  - { key: T, mods: Command|Alt, chars: "\x02\x1b\x5b\x41" }
+  - { key: H, mods: Command|Alt, chars: "\x02\x1b\x5b\x42" }
+
+  - { key: D, mods: Command, chars: "\x02\x64" }
+  - { key: N, mods: Command, chars: "\x02\x6e" }
+  - { key: T, mods: Command, chars: "\x02\x74" }
+  - { key: H, mods: Command, chars: "\x02\x68" }
+
+  - { key: Q, mods: Command, chars: "\x02\x64" }
+  - { key: W, mods: Command, chars: "\x08" }
+
+  - { key: Key1, mods: Command, chars: "\x02\x31" }
+  - { key: Key2, mods: Command, chars: "\x02\x32" }
+  - { key: Key3, mods: Command, chars: "\x02\x33" }
+  - { key: Key4, mods: Command, chars: "\x02\x34" }
+  - { key: Key5, mods: Command, chars: "\x02\x35" }
+  - { key: Key6, mods: Command, chars: "\x02\x36" }
+  - { key: Key7, mods: Command, chars: "\x02\x37" }
+  - { key: Key8, mods: Command, chars: "\x02\x38" }
+  - { key: Key9, mods: Command, chars: "\x02\x39" }
 
   - { mode: Vi,    key: T,     action: Up }
   - { mode: Vi,    key: H,     action: Down }
