@@ -128,7 +128,6 @@ filetype indent on                     " Enable indent
 
 " set completeopt=menuone,noselect       " Auto complete popup
 set laststatus=2                       " Always have status line
-set clipboard=unnamed                  " Clipboard
 set background=dark                    " Always use dark background
 set nocompatible                       " Enable VIM features
 set number                             " Enable line numbers
