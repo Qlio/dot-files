@@ -23,8 +23,6 @@ Plug 'bluz71/vim-nightfly-guicolors'
 
 call plug#end()
 
-lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
-
 ":1 Keyboard mapping
 " Change the leader map
 let mapleader = ','

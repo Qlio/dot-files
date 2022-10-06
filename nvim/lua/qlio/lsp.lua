@@ -23,6 +23,7 @@ require'lspconfig'.tsserver.setup{
 
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.terraformls.setup{}
+require'lspconfig'.solidity_ls.setup{}
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
