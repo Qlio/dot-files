@@ -9,15 +9,22 @@ Plug 'vimwiki/vimwiki'
 Plug 'scrooloose/nerdtree'
 Plug 'mattn/emmet-vim'
 Plug 'fisadev/vim-isort'
-Plug 'neovim/nvim-lspconfig'
-Plug 'tami5/lspsaga.nvim'
-Plug 'hrsh7th/nvim-compe'
-Plug 'SirVer/ultisnips'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'tomlion/vim-solidity'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+
+":2 LSP autocompletions
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'tami5/lspsaga.nvim'
+
+Plug 'SirVer/ultisnips'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
 Plug 'bluz71/vim-nightfly-guicolors'
 
@@ -124,7 +131,8 @@ filetype off                           " Disable file type detection
 filetype plugin on                     " Enable plugins
 filetype indent on                     " Enable indent
 
-" set completeopt=menuone,noselect       " Auto complete popup
+
+set completeopt=menu,menuone,noselect  " Auto complete popup
 set laststatus=2                       " Always have status line
 set background=dark                    " Always use dark background
 set nocompatible                       " Enable VIM features

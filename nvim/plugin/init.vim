@@ -1,6 +1,6 @@
 lua require('qlio.telescope')
 lua require('qlio.lsp')
-lua require('qlio.compe')
+lua require('qlio.nvim-cmp')
 lua require('qlio.lsp-saga')
 lua require('qlio.lualine')
 lua require('qlio.tree-sitter')

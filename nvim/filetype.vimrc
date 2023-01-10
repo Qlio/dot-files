@@ -43,9 +43,9 @@ autocmd FileType python nmap <leader>s :PyrightOrganizeImports<CR>
 
 ":1 Tab configuration for filetypes
 " no tab use. tab = 4 space
-autocmd FileType python,sh,typescript,gdscript3,javascript,javascriptreact,lua
+autocmd FileType python,sh,gdscript3,javascript,javascriptreact,lua,solidity
   \ setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 " no tab use. tab = 2 space
-autocmd FileType css,vim,stylus,yaml,coffee,htmljinja,sh
+autocmd FileType css,vim,stylus,yaml,coffee,htmljinja,sh,typescript
   \ setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
