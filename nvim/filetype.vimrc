@@ -13,15 +13,28 @@ autocmd FileType java setlocal tabstop=4
 autocmd FileType vim setlocal foldmethod=marker foldmarker=\"\:,\"\ endfold
 
 ":1 Typescript
-autocmd FileType typescript setlocal foldmethod=syntax
+function! TypeScriptFoldText()
+  let text = getline(v:foldstart)
+  if text =~# "= () => [({].?"
+    return text[:-10]
+  endif
+  if text =~# "= [({]$"
+    return text[:-4]
+  endif
+  if text =~# "[({]$"
+    return text[:-2]
+  endif
+  return text
+endfunction
+autocmd FileType typescript setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr() foldtext=TypeScriptFoldText()
+autocmd FileType typescript,typescriptreact UltiSnipsAddFiletypes typescript
 
 ":1 Terraform
 function! TerraformFoldText()
   const splittedLineList = split(getline(v:foldstart), ' ')[:-2]
   let type = splittedLineList[0]
   let lineList = splittedLineList[1:]
-  let txt = type . " " . join(lineList, ' ')
-  return txt
+  return type . " " . join(lineList, ' ')
 endfunction
 autocmd FileType terraform setlocal foldmethod=expr foldexpr=(getline(v:lnum+1)=~'^\\l'?'<1':1) foldtext=TerraformFoldText()
 
@@ -49,3 +62,6 @@ autocmd FileType python,sh,gdscript3,javascript,javascriptreact,lua,solidity
 " no tab use. tab = 2 space
 autocmd FileType css,vim,stylus,yaml,coffee,htmljinja,sh,typescript
   \ setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+
+":1 emmet
+autocmd FileType html,css,typescriptreact EmmetInstall

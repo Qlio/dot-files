@@ -10,9 +10,11 @@ Plug 'scrooloose/nerdtree'
 Plug 'mattn/emmet-vim'
 Plug 'fisadev/vim-isort'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+Plug 'nvim-tree/nvim-web-devicons'
 
 ":2 LSP autocompletions
 Plug 'neovim/nvim-lspconfig'
@@ -116,6 +118,7 @@ let NERDTreeIgnore=[
 let g:vimwiki_list = [{'path': '~/.config/vimwiki', 'path_html': '~/.config/vimwiki'}]
 
 let g:user_emmet_leader_key=','
+let g:user_emmet_install_global = 0 " Disabling global emmet, will enable on specific filetypes
 
 let g:vim_isort_python_version = 'python3'
 let g:vim_isort_config_overrides = {'line_length': 120}
