@@ -1,5 +1,7 @@
 (class_declaration) @fold
 
+(enum_declaration) @fold
+
 (interface_declaration) @fold
 
 (type_alias_declaration) @fold
