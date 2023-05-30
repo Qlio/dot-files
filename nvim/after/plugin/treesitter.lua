@@ -1,5 +1,5 @@
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "javascript", "typescript", "vim", "python", "terraform" },
+    ensure_installed = { "javascript", "typescript", "vim", "python", "terraform", "lua" },
     indent = {
         enable = true
     },
