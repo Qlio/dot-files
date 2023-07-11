@@ -53,16 +53,31 @@ require('telescope').setup {
                     end,
                     ['u'] = fb_actions.goto_parent_dir,
                     ['f'] = fb_actions.toggle_hidden,
+                    ['s'] = fb_actions.toggle_browser,
                 },
             },
         },
     }
 }
 
-require("telescope").load_extension "file_browser"
+local file_browser = require("telescope").load_extension "file_browser"
 
 -- Telescope
-vim.keymap.set('', '<F2>', ':Telescope file_browser path=%:p:h select_buffer=true<CR>', { silent = true })
+vim.keymap.set('', '<F2>', function()
+    file_browser.file_browser({
+        path = '%:p:h',
+        select_buffer = true,
+        hidden = {
+            file_browser = false,
+            folder_browser = false,
+        },
+        respect_gitignore = false,
+        layout_config = {
+            height = .9,
+            width = .8,
+        },
+    })
+end, { silent = true })
 vim.keymap.set('n', '<m-p>', function ()
     builtin.find_files({
         find_command = {
@@ -78,5 +93,4 @@ end)
 
 vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
 vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
-
 vim.keymap.set('n', '<leader>d', builtin.diagnostics, {})

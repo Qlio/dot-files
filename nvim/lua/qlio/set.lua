@@ -15,3 +15,4 @@ vim.opt.lazyredraw = true   -- Do not redraw screen in the middle of a macro. Ma
 vim.opt.ignorecase = true   -- Searches are case insensitive
 vim.opt.smartcase = true    -- Searches with a capital characters are case sensitive.
 vim.opt.undofile = true     -- Persistent undo
+vim.opt.swapfile = false    -- Fuck swapfiles
