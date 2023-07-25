@@ -40,3 +40,6 @@ vim.keymap.set('', '<leader>y', '"+y')
 vim.keymap.set('', '<leader>Y', '"+Y')
 
 vim.keymap.set('', '<leader>r', ':set wrap!<CR>')
+
+vim.keymap.set('', '<space>', 'za')
+vim.keymap.set('', '<cr>', 'za')
