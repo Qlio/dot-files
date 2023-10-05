@@ -32,6 +32,18 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
+vim.api.nvim_create_autocmd("BufWinEnter", {
+    pattern = "*",
+    desc = "Easy fold toggle for enter key. (Exclude `quickfix` filetype)",
+    callback = function()
+        if vim.fn.getwinvar(vim.api.nvim_get_current_win(), '&ft') == 'qf' then
+            vim.keymap.del('n', '<cr>');
+        else
+            vim.keymap.set('n', '<cr>', 'za');
+        end
+    end,
+})
+
 function TerraformFoldText()
     local words = {}
     for substring in vim.fn.getline(vim.v.foldstart):gmatch("[a-z_\"-]+") do
@@ -42,7 +54,6 @@ end
 
 function TypeScriptFoldText()
     local line = vim.fn.getline(vim.v.foldstart)
-    print(line:sub(-1))
 
     if line:sub(-9) == "= () => {" or line:sub(-9) == "= () => (" then
         return line:sub(0, -10)
