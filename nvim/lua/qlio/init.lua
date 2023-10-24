@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     command = [[%s/\s\+$//e]],
 })
 
-vim.api.nvim_create_autocmd("BufEnter", {
+vim.api.nvim_create_autocmd("BufWinEnter", {
     pattern = "*.tf",
     desc = "Custom terraform folding",
     callback = function()
@@ -29,6 +29,8 @@ vim.api.nvim_create_autocmd("BufEnter", {
         vim.api.nvim_set_option_value("foldmethod", "expr", { scope = "local" })
         vim.api.nvim_set_option_value("foldtext", "v:lua.TypeScriptFoldText()", { scope = "local" })
         vim.api.nvim_set_option_value("foldexpr", "nvim_treesitter#foldexpr()", { scope = "local" })
+        vim.cmd("normal zx")
+
     end,
 })
 
