@@ -81,7 +81,7 @@ end, { silent = true })
 vim.keymap.set('n', '<m-p>', function ()
     builtin.find_files({
         find_command = {
-            'fd', '--type', 'file', '--hidden', '--no-ignore-vcs'
+            'fd', '--type', 'file', '--hidden', '--no-ignore-vcs', '--ignore-file=' .. os.getenv('HOME') .. '/.fdignore'
         }
     })
 end, {})
@@ -93,4 +93,5 @@ end)
 
 vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
 vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
+vim.keymap.set('n', '<leader>gc', builtin.git_bcommits, {})
 vim.keymap.set('n', '<leader>d', builtin.diagnostics, {})
