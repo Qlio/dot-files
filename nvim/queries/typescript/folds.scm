@@ -10,6 +10,10 @@
   value: (arrow_function)
 ) @fold
 
+(export_statement
+  value: (arrow_function)
+) @fold
+
 (decorator) @fold
 
 ; test cases
