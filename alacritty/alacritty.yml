@@ -57,6 +57,7 @@ key_bindings:
   - { key: F2,     mods: Command,       chars: "\x02\x2c" }
   - { key: M,      mods: Alt,           chars: "\x02\x6d" }
   - { key: B,      mods: Command,       chars: "\x1bb" }
+  - { key: F,      mods: Command,       chars: "\x1bf" }
   - { key: P,      mods: Command,       chars: "\x1bp" }
   - { key: G,      mods: Command,       chars: "\x1bg" }
   - { key: S,      mods: Command,       chars: "\x1b\x3a\x77\x0a" }
