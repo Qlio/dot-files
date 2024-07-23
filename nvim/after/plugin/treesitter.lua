@@ -1,5 +1,5 @@
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "javascript", "typescript", "vim", "python", "terraform", "lua" },
+    ensure_installed = { "javascript", "typescript", "vim", "python", "terraform", "lua", "query" },
     indent = {
         enable = true
     },
@@ -31,4 +31,4 @@ local read_query = function(filename)
   return table.concat(vim.fn.readfile(vim.fn.expand(filename)), "\n")
 end
 
-require("vim.treesitter.query").set_query("typescript", "folds", read_query('~/.config/nvim/queries/typescript/folds.scm'))
+require'vim.treesitter.query'.set("typescript", "folds", read_query('~/.config/nvim/queries/typescript/folds.scm'))
