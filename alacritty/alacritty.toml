@@ -1,0 +1,244 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+blue = "#5FAFFF"
+cyan = "#5FAFFF"
+green = "#5FFF87"
+magenta = "#AF87FF"
+red = "#FF6059"
+white = "#FAFAFA"
+yellow = "#FFFF87"
+
+[colors.normal]
+black = "#282C34"
+blue = "#5FAFFF"
+cyan = "#5FAFFF"
+green = "#5FFF87"
+magenta = "#AF87FF"
+red = "#FF6059"
+white = "#FAFAFA"
+yellow = "#FFFF87"
+
+[colors.primary]
+background = "#313440"
+foreground = "#FAFAFA"
+
+[colors.selection]
+background = "#252834"
+text = "#FAFAFA"
+
+[env]
+LANG = "en_US.UTF-8"
+
+[font]
+size = 10.0
+
+[font.normal]
+family = "Monaco Nerd Font Mono"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "Return"
+mods = "Alt"
+
+[[keyboard.bindings]]
+action = "ScrollLineUp"
+key = "T"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ScrollLineDown"
+key = "H"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0002,"
+key = "F2"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002m"
+key = "M"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bb"
+key = "B"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bf"
+key = "F"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bp"
+key = "P"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bg"
+key = "G"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = """
+\u001B:w
+"""
+key = "S"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002c"
+key = "T"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0002%"
+key = "N"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0002\""
+key = "H"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0002\u001B[D"
+key = "D"
+mods = "Command|Alt"
+
+[[keyboard.bindings]]
+chars = "\u0002\u001B[C"
+key = "N"
+mods = "Command|Alt"
+
+[[keyboard.bindings]]
+chars = "\u0002\u001B[A"
+key = "T"
+mods = "Command|Alt"
+
+[[keyboard.bindings]]
+chars = "\u0002\u001B[B"
+key = "H"
+mods = "Command|Alt"
+
+[[keyboard.bindings]]
+chars = "\u0002d"
+key = "D"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002n"
+key = "N"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002t"
+key = "T"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002h"
+key = "H"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002d"
+key = "Q"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\b"
+key = "W"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00021"
+key = "Key1"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00022"
+key = "Key2"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00023"
+key = "Key3"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00024"
+key = "Key4"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00025"
+key = "Key5"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00026"
+key = "Key6"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00027"
+key = "Key7"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00028"
+key = "Key8"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00029"
+key = "Key9"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Up"
+key = "T"
+mode = "Vi"
+
+[[keyboard.bindings]]
+action = "Down"
+key = "H"
+mode = "Vi"
+
+[[keyboard.bindings]]
+action = "Right"
+key = "N"
+mode = "Vi"
+
+[[keyboard.bindings]]
+action = "Left"
+key = "D"
+mode = "Vi"
+
+[[keyboard.bindings]]
+action = "First"
+key = "D"
+mode = "Vi"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "Last"
+key = "N"
+mode = "Vi"
+mods = "Shift"
+
+[scrolling]
+history = 10000
+
+[window]
+opacity = 0.9
+title = "Terminal"
+option_as_alt = "OnlyLeft"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
