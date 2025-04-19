@@ -43,3 +43,20 @@ vim.keymap.set('', '<leader>r', ':set wrap!<CR>')
 
 vim.keymap.set('', '<space>', 'za')
 vim.keymap.set('', '<cr>', 'za')
+
+vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
+vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "solidity",
+  callback = function()
+    vim.api.nvim_buf_set_keymap(0, "n", "<leader>p", ":!forge fmt % > /dev/null 2>&1<CR><CR>", { noremap = true, silent = true })
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "terraform",
+  callback = function()
+    vim.api.nvim_buf_set_keymap(0, "n", "<leader>p", ":!terraform fmt %<CR><CR>", { noremap = true, silent = true })
+  end,
+})

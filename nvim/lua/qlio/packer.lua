@@ -37,4 +37,8 @@ return require('packer').startup(function(use)
             {'L3MON4D3/LuaSnip'},
         }
     }
+
+    use 'mbbill/undotree'
+
+    use 'eandrju/cellular-automaton.nvim'
 end)
