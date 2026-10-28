@@ -22,3 +22,4 @@
 !pacman-requirements.txt
 !xinitrc
 !picom.conf
+!tmux*
